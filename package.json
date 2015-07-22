@@ -1,0 +1,22 @@
+{
+  "name": "indulge",
+  "version": "0.1.0",
+  "description": "Geo-targeted heat map using Twitter and Google maps",
+  "main": "twitter.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eriksjaastad/indulge.git"
+  },
+  "author": "Luke Gabrieli, Justin DeLuna, Erik Sjaastad",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eriksjaastad/indulge/issues"
+  },
+  "homepage": "https://github.com/eriksjaastad/indulge",
+  "dependencies": {
+    "twitter": "^1.2.5"
+  }
+}
