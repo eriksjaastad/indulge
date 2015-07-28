@@ -1,6 +1,9 @@
-var app = require('express')();
-var mongo = require('mongodb');
+var express = require('express');
+var app = express();
+
 var Twitter = require('twitter');
+var mongo = require('mongodb');
+
 
 var client = new Twitter ({
   consumer_key: process.env.TWITTER_CONSUMER_KEY,
@@ -31,12 +34,17 @@ mongo.connect('mongodb://localhost/27017', function(err, db) {
       console.error(error);
     });
 
+    app.get('/', function(req, res) {
+      col.find().toArray(function(err, result) {
+        res.json(result);
+      });
+    });
+
     stream.on('end', console.log.bind(console));
   });
 });
-
-
 var port = process.env.PORT || 3000;
 app.listen(port, function() {
   console.log('\nServer is now running on port ' + port + '...\n');
 });
+
