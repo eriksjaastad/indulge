@@ -1,0 +1,46 @@
+// -----WELCOME MESSAGE-----
+
+.welcome {
+  z-index: 300;
+  position: absolute;
+  width: 40%;
+  height: 40%;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translateX(-50%, -50%);
+  transform: translate(-50%, -50%);
+  background-color: $primary-color;
+}
+
+// -----SLIDER ICON-----
+
+.icon-arrow-right {
+  padding: .3em;
+  position: absolute;
+  z-index: 100;
+  -webkit-transition: -webkit-transform .3s;
+  transition: transform .3s;
+}
+
+// -----LIST OF TWEETS-----
+
+.tweetList {
+  z-index: 100;
+  width: 30%;
+  height: 100vh;
+  position: absolute;
+  overflow: auto;
+  -webkit-transform: translateX(-100%);
+  transform: translateX(-100%);
+  -webkit-transition: -webkit-transform .3s;
+  transition: transform .3s;
+}
+
+.tweetList.is-active {
+  -webkit-transform: translateX(0%);
+  transform: translateX(0%);
+}
+
+.tweetList section {
+  padding: 2em 0;
+}
