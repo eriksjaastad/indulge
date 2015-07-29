@@ -1,19 +1,16 @@
 var mongo = require('mongodb');
 var express = require('express');
 var app = express();
-
-
-
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
 var Twitter = require('twitter');
 
 var client = new Twitter ({
-  consumer_key: 'AOztrA5dsNyCNER0g89k0slQi',
-  consumer_secret: 'kxmTIpyvgr9hJq1KkzFE9E2noVZ9VDALMz8qKFOudAJipBEEbW',
-  access_token_key: '16349436-U5gvCtG0Qk23j5JeJOpXy4AJtSSp7xuDmuCinJKpq',
-  access_token_secret: 'IQpkWFvNM8zB8x0Q2O82BJLTYzoqeMjCJUu3aN3HVEKny'
+  consumer_key: 'process.env.TWITTER_CONSUMER_KEY',
+  consumer_secret: 'process.env.TWITTER_CONSUMER_SECRET',
+  access_token_key: 'process.env.TWITTER_ACCESS_TOKEN_KEY',
+  access_token_secret: 'process.env.TWITTER_ACCESS_TOKEN_SECRET'
 });
 
 app.use(express.static(__dirname + '/public'));
@@ -30,10 +27,12 @@ mongo.connect('mongodb://127.0.0.1/27017', function(err, db) {
     console.log('Connected to MongoDB');
   }
 
+  var col = db.collection('tweets');
+
   client.stream('statuses/filter', {locations: '-122.41, 47.54, -122.24, 47.70'}, function(stream) {
     console.log("stream opened");
 
-    var col = db.collection('tweets');
+
 
     stream.on('data', function(tweet) {
       if (tweet.geo) {
@@ -46,8 +45,6 @@ mongo.connect('mongodb://127.0.0.1/27017', function(err, db) {
   });
 
   io.on('connection', function(socket) {
-
-    var col = db.collection('tweets');
 
     col.find().toArray(function(error, result) {
       if(error) throw error;

@@ -1,33 +1,20 @@
 'use strict';
 
-// var socket = io.connect('http://127.0.0.1:3000');
-// console.log('socket connected');
-// var globalData;
-// // Listen for output
-// socket.on('output', function(lukesData) {
-//   globalData = lukesData;
-//   console.log(globalData);
-// });
-
-var test = [{text: 'hello'}, {text:'goodbye'}];
+var socket = io.connect('http://127.0.0.1:3000');
 
 module.exports = function(app) {
 
   app.controller('mapController', ['$scope', function($scope){
-    var socket = io.connect('http://127.0.0.1:3000');
+
     console.log('socket connected');
     var globalData;
     // Listen for output
     socket.on('output', function(lukesData) {
       globalData = lukesData;
-      console.log(globalData);
+      // console.log(globalData);
+      $scope.tweets = lukesData;
+      $scope.$apply();
     });
-
-    $scope.tweets = test;
-
-
-
-    // var Http = twitter ();
 
 
     // $scope.markers = [];
@@ -167,19 +154,19 @@ module.exports = function(app) {
 
     //-----GOOGLE MAPS STUFF-----
 
-    // var mapOptions = {
-    //   zoom: 11,
-    //   center: new google.maps.LatLng(47.623581, -122.335661),
-    //   // styles: stylesArray,
-    //   disableDefaultUI: true,
-    //   zoomControl: true,
-    //   zoomControlOptions: {
-    //     style: google.maps.ZoomControlStyle.LARGE,
-    //     position: google.maps.ControlPosition.RIGHT_CENTER
-    //   }
-    // }
-    // $scope.map = new google.maps.Map(document.getElementById('map'), mapOptions);
-    // var infoWindow = new google.maps.InfoWindow();
+    var mapOptions = {
+      zoom: 11,
+      center: new google.maps.LatLng(47.623581, -122.335661),
+      // styles: stylesArray,
+      disableDefaultUI: true,
+      zoomControl: true,
+      zoomControlOptions: {
+        style: google.maps.ZoomControlStyle.LARGE,
+        position: google.maps.ControlPosition.RIGHT_CENTER
+      }
+    }
+    $scope.map = new google.maps.Map(document.getElementById('map'), mapOptions);
+    var infoWindow = new google.maps.InfoWindow();
 
   }]);
 

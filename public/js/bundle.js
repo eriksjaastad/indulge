@@ -47,8 +47,7 @@
 	__webpack_require__(1);
 	__webpack_require__(4);
 	__webpack_require__(5);
-	__webpack_require__(3);
-	module.exports = __webpack_require__(6);
+	module.exports = __webpack_require__(3);
 
 
 /***/ },
@@ -60,9 +59,6 @@
 	__webpack_require__(2);
 
 	var indulgeApp = angular.module('indulgeApp',[]);
-
-	//require the service
-	// require('./services/mapService.js')(indulgeApp);
 
 	// require the controller
 	__webpack_require__(3)(indulgeApp);
@@ -28443,34 +28439,21 @@
 
 	'use strict';
 
-	// var socket = io.connect('http://127.0.0.1:3000');
-	// console.log('socket connected');
-	// var globalData;
-	// // Listen for output
-	// socket.on('output', function(lukesData) {
-	//   globalData = lukesData;
-	//   console.log(globalData);
-	// });
-
-	var test = [{text: 'hello'}, {text:'goodbye'}];
+	var socket = io.connect('http://127.0.0.1:3000');
 
 	module.exports = function(app) {
 
 	  app.controller('mapController', ['$scope', function($scope){
-	    var socket = io.connect('http://127.0.0.1:3000');
+
 	    console.log('socket connected');
 	    var globalData;
 	    // Listen for output
 	    socket.on('output', function(lukesData) {
 	      globalData = lukesData;
-	      console.log(globalData);
+	      // console.log(globalData);
+	      $scope.tweets = lukesData;
+	      $scope.$apply();
 	    });
-
-	    $scope.tweets = test;
-
-
-
-	    // var Http = twitter ();
 
 
 	    // $scope.markers = [];
@@ -28610,19 +28593,19 @@
 
 	    //-----GOOGLE MAPS STUFF-----
 
-	    // var mapOptions = {
-	    //   zoom: 11,
-	    //   center: new google.maps.LatLng(47.623581, -122.335661),
-	    //   // styles: stylesArray,
-	    //   disableDefaultUI: true,
-	    //   zoomControl: true,
-	    //   zoomControlOptions: {
-	    //     style: google.maps.ZoomControlStyle.LARGE,
-	    //     position: google.maps.ControlPosition.RIGHT_CENTER
-	    //   }
-	    // }
-	    // $scope.map = new google.maps.Map(document.getElementById('map'), mapOptions);
-	    // var infoWindow = new google.maps.InfoWindow();
+	    var mapOptions = {
+	      zoom: 11,
+	      center: new google.maps.LatLng(47.623581, -122.335661),
+	      // styles: stylesArray,
+	      disableDefaultUI: true,
+	      zoomControl: true,
+	      zoomControlOptions: {
+	        style: google.maps.ZoomControlStyle.LARGE,
+	        position: google.maps.ControlPosition.RIGHT_CENTER
+	      }
+	    }
+	    $scope.map = new google.maps.Map(document.getElementById('map'), mapOptions);
+	    var infoWindow = new google.maps.InfoWindow();
 
 	  }]);
 
@@ -28654,55 +28637,6 @@
 	  $('.mask').removeClass('is-active');
 	  $('.welcome').css('display', 'none');
 	});
-
-
-/***/ },
-/* 6 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	module.exports = function (app) {
-
-	  var handleError = function(err) {
-	    console.log(err);
-	  }
-
-	  app.factory('twitter', ['$http', function($http) {
-	    return function() {
-	      return {
-	        getter: function(callback) {
-	          $http({
-	            method: 'GET',
-	            url: 'https://data.seattle.gov/resource/7stk-8j8w.json'
-	          })
-	          .success(callback)
-	          .error(handleError);
-	        }
-	      };
-	    };
-	  }]);
-
-
-
-
-	  // var handleError = function(data) {
-	  //   console.log(data);
-	  // };
-
-	  // app.factory('tweetMarkers', ['$http', function($http){
-	  //   return {
-	  //     getTweet: function(callback) {
-	  //       $http({
-	  //         method: 'GET',
-	  //         url: 'https://data.seattle.gov/resource/7stk-8j8w.json'
-	  //       })
-	  //       .success(callback)
-	  //       .error(handleError);
-	  //     }
-	  //   };
-	  // }]);
-	};
 
 
 /***/ }
