@@ -1,0 +1,22 @@
+header {
+  z-index: 100;
+  position: absolute;
+  right: 3em;
+  top: -1.6em;
+  text-align: center;
+  padding: 3em 1em 1.5em 1em;
+  background-color: $primary-color;
+  border: .3em solid $secondary-color;
+  color: white;
+  .icon-location2 {
+    font-size: 3em;
+    margin-bottom: .5em;
+  }
+  h1 {
+    font-size: 1.5em;
+  }
+  &:hover {
+    top: -.3em;
+    transition: top .3s ease;
+  }
+}
