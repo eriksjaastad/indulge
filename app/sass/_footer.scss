@@ -1,0 +1,21 @@
+footer {
+  padding: .6em 0;
+  color: white;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  z-index: 100;
+  background-color: #182D65;
+  p {
+    float: left;
+  }
+}
+
+.footerLinks {
+  float: right;
+  a {
+    color: white;
+    text-decoration: none;
+    margin-right: .4em;
+  }
+}
