@@ -19,10 +19,12 @@ You'll need:
 DO NOT put these keys in your app, set them to an environment variable
 In the console:
 *notice there are no spaces around the `=`
-`export TWITTER_CONSUMER_KEY=your-consumer-key`
-`export TWITTER_CONSUMER_SECRET=your-consumer-secret`
-`export TWITTER_ACCESS_TOKEN_KEY=your-access-token`
-`export TWITTER_ACCESS_TOKEN_SECRET=your-access-token-secret`
+```
+export TWITTER_CONSUMER_KEY=your-consumer-key
+export TWITTER_CONSUMER_SECRET=your-consumer-secret
+export TWITTER_ACCESS_TOKEN_KEY=your-access-token
+export TWITTER_ACCESS_TOKEN_SECRET=your-access-token-secret
+```
 
 Then add them in to your app like this:
 ```
