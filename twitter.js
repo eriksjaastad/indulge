@@ -1,9 +1,11 @@
+var mongo = require('mongodb');
 var express = require('express');
 var app = express();
 
-var Twitter = require('twitter');
-var mongo = require('mongodb');
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
 
+var Twitter = require('twitter');
 
 var client = new Twitter ({
   consumer_key: process.env.TWITTER_CONSUMER_KEY,
@@ -12,26 +14,20 @@ var client = new Twitter ({
   access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
 });
 
-  // http://www.svennerberg.com/2009/01/handling-large-amounts-of-markers-in-google-maps/
-  // Bulk adding the markers
-  //get longitue and lattitude of first tweet id
-  //compare longitude and lattiturd to all other tweet locations
-  //for each location that is close
-  //push locations to markers array
-  //if there are no locations close move to the next tweet id
-  //create a new marker array and push locations that are close in to it
-  //if there are no more tweet id's
-  //push all marker arrays to mgr.addMarkers(markers);
+app.use(express.static(__dirname + '/'));
+app.set('port', (process.env.PORT || 3000));
 
+app.get('/', function(request, response) {
+  response.sendFile(__dirname + '/index.html');
+});
 
-
-
-mongo.connect('mongodb://localhost/27017', function(err, db) {
-  if (err) {
+mongo.connect('mongodb://127.0.0.1/27017', function(err, db) {
+  if(err) {
     console.log(err);
   } else {
-    console.log('Successfully connected to MongoDB...\n');
+    console.log('Connected to MongoDB');
   }
+
 
 
   var col = db.collection('tweets');
@@ -61,38 +57,38 @@ col.aggregate([
 
 
 
-  client.stream('statuses/filter', {locations: '-122.41, 47.54, -122.24, 47.70'}, function(stream) {
-    console.log('Stream has started...\n');
+  client.stream('statuses/filter', {track: 'Seattle'}, function(stream) {
+    console.log("stream opened");
+
     stream.on('data', function(tweet) {
-      if (tweet.geo) {
-        col.insert({curDate: new Date().toISOString(),
-                    text: tweet.text,
-                    latitute: tweet.geo.coordinates[1],
-                    longitude: tweet.geo.coordinates[0],
-                    location: {
-                      lng: tweet.geo.coordinates[0],
-                      lat: tweet.geo.coordinates[1]
-                      }
-                  });
-        console.log(tweet.geo.coordinates[0], tweet.geo.coordinates[1]);
-      }
+      console.log(tweet.text);
     });
 
     stream.on('error', function(error) {
       console.error(error);
     });
 
-    app.get('/', function(req, res) {
-      col.find().toArray(function(err, result) {
-        res.json(result);
-      });
+    stream.on("end", console.log.bind(console));
+  });
+
+  io.on('connection', function(socket) {
+
+    var col = db.collection('tweets');
+
+
+    col.find().toArray(function(error, result) {
+      if(error) throw error;
+      socket.emit('output', result);
     });
 
-    stream.on('end', console.log.bind(console));
   });
 });
-var port = process.env.PORT || 3000;
-app.listen(port, function() {
-  console.log('\nServer is now running on port ' + port + '...\n');
+
+io.on('connection', function(socket) {
+  console.log('A user has connected!\n');
 });
 
+
+http.listen(app.get('port'), function() {
+  console.log('\nServer is now running on port ' + app.get('port') + '...\n');
+});
