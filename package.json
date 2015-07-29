@@ -19,6 +19,7 @@
   "dependencies": {
     "angular": "^1.4.3",
     "express": "^4.12.4",
+    "mongodb": "^2.0.39",
     "socket.io": "^1.3.6",
     "twitter": "^1.2.5"
   },
