@@ -29,12 +29,19 @@ mongo.connect('mongodb://127.0.0.1/27017', function(err, db) {
   }
 
   var col = db.collection('tweets');
+  client.stream('statuses/filter', {locations: '-122.41, 47.54, -122.24, 47.70'}, function(stream) {
+    console.log("Twitter stream has started...\n");
 
-  io.on('connection', function(socket) {
-    client.stream('statuses/filter', {locations: '-122.41, 47.54, -122.24, 47.70'}, function(stream) {
-      console.log("Twitter stream has started...\n");
+    col.find().toArray(function(err, result) {
+      if (err) {
+        console.log(err);
+      }
+      io.emit('output', result);
+    });
 
+    io.on('connection', function(socket) {
       stream.on('data', function(tweet) {
+        //console.log('two');
         if (tweet.geo) {
           var newTweet = {
             curDate: new Date().toISOString(),
@@ -47,13 +54,9 @@ mongo.connect('mongodb://127.0.0.1/27017', function(err, db) {
           console.log(tweet.text);
         }
       });
-    }); //end twitter stream
 
-    col.find().toArray(function(error, result) {
-      if(error) throw error;
-      socket.emit('output', result);
-    });
-  }); //end socket connection
+    }); //end socket connection
+  }); //end twitter stream
 }); //end mongo connection
 
 io.on('connection', function(socket) {
