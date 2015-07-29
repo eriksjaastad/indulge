@@ -14,11 +14,11 @@ var client = new Twitter ({
   access_token_secret: 'process.env.TWITTER_ACCESS_TOKEN_SECRET'
 });
 
-app.use(express.static(__dirname));
+app.use(express.static(__dirname + '/public'));
 app.set('port', (process.env.PORT || 3000));
 
-app.get('/', function(request, response) {
-  response.send('ok');
+app.get('/', function(req, res) {
+  res.send('ok');
 });
 
 mongo.connect('mongodb://127.0.0.1/27017', function(err, db) {
