@@ -32,8 +32,8 @@ mongo.connect(mongoURI, function(err, db) {   //open mongo connection
     var newTweet;
     stream.on('data', function(tweet) { //start twitter DATA
       //sanity check for incoming data
-      console.log('two');
-      if (tweet.geo) {
+      console.log('searching for data...');
+      if (tweet.geo && (tweet.text.toLowerCase().indexOf('#hire') < 0 ) && (tweet.text.toLowerCase().indexOf('#hiring') < 0 ) && (tweet.text.toLowerCase().indexOf('#job') < 0)) {
 
         newTweet = {
           curDate: new Date().toISOString(),
