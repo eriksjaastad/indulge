@@ -7,10 +7,10 @@ var Twitter = require('twitter');
 var mongoURI = process.env.MONGOLAB_URI || 'mongodb://127.0.0.1/27017';
 
 var client = new Twitter ({
-consumer_key: 'SjI0oCWx5l4byUV5sfP1nBE5F',
- consumer_secret: 'h8M9mxzgZxFWoTGZZlaQruXbYcaDT5xE6evasOU9T2GPQbFiwF',
- access_token_key: '16349436-UM7CvwXepFwb1HGszzCxq90JptInDQ8hMZR2HpNfS',
- access_token_secret: 'cP4XMbe3Y2tvlhixLXdfrGge5SZ8o7WdGRZKw51YWcYUU'
+  consumer_key: process.env.TWITTER_CONSUMER_KEY,
+  consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
+  access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY,
+  access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
 });
 
 app.use(express.static(__dirname + '/public'));
