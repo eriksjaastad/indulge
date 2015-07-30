@@ -1,11 +1,10 @@
 var mongo = require('mongodb');
 var express = require('express');
 var app = express();
-
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
-
 var Twitter = require('twitter');
+var mongoURI = process.env.MONGOLAB_URI || 'mongodb://127.0.0.1/27017';
 
 var client = new Twitter ({
   consumer_key: process.env.TWITTER_CONSUMER_KEY,
@@ -50,7 +49,7 @@ mongo.connect('mongodb://127.0.0.1/27017', function(err, db) {   //open mongo co
     io.on('connection', function(socket) {  //open socket when user connects
       //sanity check for connection start
       console.log('A new user has connected!\n');
-      
+
 
       //send tweets that are already in db to client
       col.find().toArray(function(err, result) {
@@ -63,7 +62,7 @@ mongo.connect('mongodb://127.0.0.1/27017', function(err, db) {   //open mongo co
       socket.on('disconnect', function () {
         console.log('User disconnected!\n');
       });
-    }); //end socket connection   
+    }); //end socket connection
 
   }); //end twitter stream
 }); //end mongo connection
