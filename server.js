@@ -31,7 +31,7 @@ mongo.connect('mongodb://127.0.0.1/27017', function(err, db) {   //open mongo co
     var newTweet;
     stream.on('data', function(tweet) { //start twitter DATA
       //sanity check for incoming data
-      console.log('two');
+      console.log('searching for data...');
       if (tweet.geo) {
 
         newTweet = {
