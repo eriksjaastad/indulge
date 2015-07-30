@@ -32,13 +32,6 @@ mongo.connect('mongodb://127.0.0.1/27017', function(err, db) {
   client.stream('statuses/filter', {locations: '-122.41, 47.54, -122.24, 47.70'}, function(stream) {
     console.log("Twitter stream has started...\n");
 
-    col.find().toArray(function(err, result) {
-      if (err) {
-        console.log(err);
-      }
-      io.emit('output', result);
-    });
-
     io.on('connection', function(socket) {
       stream.on('data', function(tweet) {
         //console.log('two');
@@ -53,6 +46,13 @@ mongo.connect('mongodb://127.0.0.1/27017', function(err, db) {
           io.emit('newTweet', newTweet);
           console.log(tweet.text);
         }
+      });
+
+      col.find().toArray(function(err, result) {
+        if (err) {
+          console.log(err);
+        }
+        io.emit('output', result);
       });
 
     }); //end socket connection
