@@ -28566,6 +28566,46 @@
 
 	      $scope.$apply();
 	    });
+
+	    socket.on('newTweet', function(newTweet) {
+	      var infoWindow = new google.maps.InfoWindow();
+	      var createMarker = function (info) {
+	        var marker = new google.maps.Marker({
+	          map: $scope.map,
+	          position: new google.maps.LatLng(info.longitude, info.latitute),
+	          title: info.text
+	        });
+
+	        google.maps.event.addListener(marker, 'click', function(){
+	          infoWindow.setContent('<h2>' + marker.title + '</h2>');
+	          infoWindow.open($scope.map, marker);
+	        });
+
+	        $scope.markers.push(marker);
+
+	        $scope.openInfoWindow = function(e, selectedMarker){
+	          e.preventDefault();
+	          google.maps.event.trigger(selectedMarker, 'click');
+	        }
+
+	        $scope.$apply();
+	      };
+	      createMarker(newTweet);
+	      //console.log(newTweet.text);
+	      var getNode = function(element) {
+	        return document.querySelector(element);
+	      };
+
+	      var tweetList = getNode('#tweetList');
+
+	      //var topOfList = getNode('#tweetList');
+
+	      var newListContent = document.createElement('section');
+	      newListContent.setAttribute('class','tweetListView');
+	      newListContent.innerHTML += '<p>"' + newTweet.text + '"</p><p class="icon-twitter"> at ' + newTweet.curDate;
+	      tweetList.insertBefore(newListContent, tweetList[0]);
+	      
+	    });
 	  }]);
 	};
 
