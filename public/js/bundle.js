@@ -28439,7 +28439,7 @@
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
-	var socket = io.connect(process.env.SOCKET_IO_CONNECTION || 'http://127.0.0.1:3000');
+	var socket = io.connect(process.env.SOCKET_IO_CONNECTION);
 
 	module.exports = function(app) {
 	  app.controller('mapController', ['$scope', function($scope){
@@ -28604,7 +28604,7 @@
 	      newListContent.setAttribute('class','tweetListView');
 	      newListContent.innerHTML += '<p>"' + newTweet.text + '"</p><p class="icon-twitter"> at ' + newTweet.curDate;
 	      tweetList.insertBefore(newListContent, tweetList[0]);
-	      
+
 	    });
 	  }]);
 	};
