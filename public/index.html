@@ -13,17 +13,22 @@
   <body data-ng-app="indulgeApp">
 
     <header class="slideDown clearfix">
-      <h1 class="logo">
+      <!-- <h1 class="logo">
         <section class="icon-location2"></section>
         <section>Indulge</section>
-      </h1>
+      </h1> -->
       <section class="icon-menu"></section>
       <ul class="clearfix">
         <a href="#"><li class="icon-github4"></li></a>
         <a href="#"><li class="icon-info"></li></a>
       </ul>
+      <h1 class="logo">
+        <section class="icon-location2"></section>
+        <section>Indulge</section>
+      </h1>
       <h2>"Visual Data Surrounding You."</h2>
     </header>
+    <div></div>
 
     <!-- <article class="welcome">
       <h1>Welcome to Indulge</h1>
@@ -34,7 +39,7 @@
     <div class="mask is-active"></div>
 
     <main data-ng-controller="mapController">
-      <article class="tweetList">
+      <article class="tweetList" id="tweetList">
         <!-- <section class="tweetListView">
           <p>"Mom and I went to the mall today and spent so much monies on new shoes. #loveher"</p>
           <p>Tweeted on July 29, 2015 at 7:34 PM</p>

@@ -6,22 +6,39 @@ header {
   border-bottom: .3em solid $secondary-color;
   .logo {
     font-size: 1.6em;
-    position: absolute;
+    // position: absolute;
     text-align: center;
-    z-index: -100;
-    background-color:$primary-color;
-    top: 0;
-    right: 2em;
-    padding: 3em 1em 1em 1em;
-    border: .2em solid $secondary-color;
+    // z-index: -100;
+    // background-color:$primary-color;
+    // top: 0;
+    // right: 2em;
+    // padding: 3em 1em 1em 1em;
+    // border: .2em solid $secondary-color;
+    @media (min-width: 35em) {
+      position: absolute;
+      z-index: -100;
+      background-color:$primary-color;
+      top: 0;
+      right: 2em;
+      padding: 3em 1em 1em 1em;
+      border: .2em solid $secondary-color;
+    }
     .icon-location2 {
+      display: none;
       font-size: 2.5em;
       margin-bottom: .2em;
+      @media (min-width: 35em) {
+        display: block;
+      }
     }
   }
   h2 {
+    display: none;
     text-align: center;
     font-size: 1.3em;
+    @media (min-width: 35em) {
+      display: block;
+    }
   }
   .icon-menu, .icon-cross {
     float: left;
@@ -39,6 +56,9 @@ header {
   }
   .icon-menu, .icon-cross {
     font-size: 1.6em;
+    &:hover {
+      cursor: pointer;
+    }
   }
   &:hover .logo{
     top: .3em;
