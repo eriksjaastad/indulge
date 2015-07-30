@@ -5,18 +5,24 @@
   border: .3em solid $secondary-color;
 }
 
-// -----SLIDER ICON-----
-
-.icon-arrow-right {
-  color: white;
-  font-size: 3em;
-  background-color: $primary-color;
-}
-
 // -----LIST OF TWEETS-----
 
 .tweetList {
-  background-color: red;
+  background-color: $primary-color;
+  color: white;
+}
+
+.tweetListView {
+  &:nth-child(odd) {
+    background-color: $secondary-color;
+  }
+  p:first-child {
+    font-style: italic;
+    line-height: 115%;
+  }
+  p:last-child {
+    font-size: .8em;
+  }
 }
 
 // -----MASK-----
@@ -41,3 +47,20 @@
 //   opacity: .7;
 //   transition: opacity 0.3s;
 // }
+
+
+// -----CLEARFIX-----
+
+.clearfix:after {
+     visibility: hidden;
+     display: block;
+     font-size: 0;
+     content: " ";
+     clear: both;
+     height: 0;
+     }
+.clearfix { display: inline-block; }
+/* start commented backslash hack \*/
+* html .clearfix { height: 1%; }
+.clearfix { display: block; }
+/* close commented backslash hack */
