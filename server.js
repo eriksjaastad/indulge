@@ -16,12 +16,8 @@ var client = new Twitter ({
 app.use(express.static(__dirname + '/public'));
 app.set('port', (process.env.PORT || 3000));
 
-app.get('/', function(req, res) {
-  res.send('ok');
-});
 
-
-mongo.connect(mongoURI, function(err, db) {
+mongo.connect(mongoURI, function(err, db) {   //open mongo connection
   if(err) {
     console.log(err);
   } else {
