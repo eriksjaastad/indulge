@@ -1,22 +1,71 @@
 header {
-  z-index: 100;
-  position: absolute;
-  right: 3em;
-  top: -1.6em;
-  text-align: center;
-  padding: 3em 1em 1.5em 1em;
   background-color: $primary-color;
-  border: .3em solid $secondary-color;
+  padding: .7em .5em;
   color: white;
-  .icon-location2 {
-    font-size: 3em;
-    margin-bottom: .5em;
+  z-index: 100;
+  border-bottom: .3em solid $secondary-color;
+  .logo {
+    font-size: 1.6em;
+    position: absolute;
+    text-align: center;
+    z-index: -100;
+    background-color:$primary-color;
+    top: 0;
+    right: 2em;
+    padding: 3em 1em 1em 1em;
+    border: .2em solid $secondary-color;
+    .icon-location2 {
+      font-size: 2.5em;
+      margin-bottom: .2em;
+    }
   }
-  h1 {
-    font-size: 1.5em;
+  h2 {
+    text-align: center;
+    font-size: 1.3em;
   }
-  &:hover {
-    top: -.3em;
-    transition: top .3s ease;
+  .icon-menu, .icon-cross {
+    float: left;
+  }
+  ul{
+    float: right;
+  }
+  li {
+    display: inline-block;
+  }
+  a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.6em;
+  }
+  .icon-menu, .icon-cross {
+    font-size: 1.6em;
+  }
+  &:hover .logo{
+    top: .3em;
+    transition: top .3s;
   }
 }
+
+
+// header {
+//   z-index: 100;
+//   position: absolute;
+//   right: 3em;
+//   top: -1.6em;
+//   text-align: center;
+//   padding: 3em 1em 1.5em 1em;
+//   background-color: $primary-color;
+//   border: .3em solid $secondary-color;
+//   color: white;
+//   .icon-location2 {
+//     font-size: 3em;
+//     margin-bottom: .5em;
+//   }
+//   h1 {
+//     font-size: 1.5em;
+//   }
+//   &:hover {
+//     top: -.3em;
+//     transition: top .3s ease;
+//   }
+// }

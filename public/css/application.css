@@ -56,8 +56,15 @@ table {
 
 @font-face {
   font-family: 'icomoon';
-  src: url("./fonts/icomoon.eot?-irw511");
-  src: url("./fonts/icomoon.eot?#iefix-irw511") format("embedded-opentype"), url("./fonts/icomoon.ttf?-irw511") format("truetype"), url("./fonts/icomoon.woff?-irw511") format("woff"), url("./fonts/icomoon.svg?-irw511#icomoon") format("svg");
+  src: url("fonts/icomoon.eot?-ydv9ve");
+  src: url("fonts/icomoon.eot?#iefix-ydv9ve") format("embedded-opentype"), url("fonts/icomoon.ttf?-ydv9ve") format("truetype"), url("fonts/icomoon.woff?-ydv9ve") format("woff"), url("fonts/icomoon.svg?-ydv9ve#icomoon") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'icomoon';
+  src: url("fonts/icomoon.eot?-6lmsww");
+  src: url("fonts/icomoon.eot?#iefix-6lmsww") format("embedded-opentype"), url("fonts/icomoon.ttf?-6lmsww") format("truetype"), url("fonts/icomoon.woff?-6lmsww") format("woff"), url("fonts/icomoon.svg?-6lmsww#icomoon") format("svg");
   font-weight: normal;
   font-style: normal; }
 
@@ -76,33 +83,62 @@ table {
 .icon-location2:before {
   content: "\e948"; }
 
+.icon-menu:before {
+  content: "\e9bd"; }
+
+.icon-info:before {
+  content: "\ea0c"; }
+
 .icon-cross:before {
   content: "\ea0f"; }
 
-.icon-arrow-right:before {
-  content: "\ea34"; }
+.icon-twitter:before {
+  content: "\ea91"; }
+
+.icon-github4:before {
+  content: "\eab4"; }
 
 body {
-  font-family: "Montserrat", sans-serif; }
+  font-family: "Montserrat", sans-serif;
+  font-size: 1em; }
 
 header {
-  z-index: 100;
-  position: absolute;
-  right: 3em;
-  top: -1.6em;
-  text-align: center;
-  padding: 3em 1em 1.5em 1em;
   background-color: #5CA7F0;
-  border: 0.3em solid #182D65;
-  color: white; }
-  header .icon-location2 {
-    font-size: 3em;
-    margin-bottom: .5em; }
-  header h1 {
-    font-size: 1.5em; }
-  header:hover {
-    top: -.3em;
-    transition: top 0.3s ease; }
+  padding: 0.7em 0.5em;
+  color: white;
+  z-index: 100;
+  border-bottom: 0.3em solid #2E6AA3; }
+  header .logo {
+    font-size: 1.6em;
+    position: absolute;
+    text-align: center;
+    z-index: -100;
+    background-color: #5CA7F0;
+    top: 0;
+    right: 2em;
+    padding: 3em 1em 1em 1em;
+    border: 0.2em solid #2E6AA3; }
+    header .logo .icon-location2 {
+      font-size: 2.5em;
+      margin-bottom: .2em; }
+  header h2 {
+    text-align: center;
+    font-size: 1.3em; }
+  header .icon-menu, header .icon-cross {
+    float: left; }
+  header ul {
+    float: right; }
+  header li {
+    display: inline-block; }
+  header a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.6em; }
+  header .icon-menu, header .icon-cross {
+    font-size: 1.6em; }
+  header:hover .logo {
+    top: .3em;
+    transition: top 0.3s; }
 
 footer {
   padding: .6em 0;
@@ -123,6 +159,10 @@ footer {
     margin-right: .4em; }
 
 #map {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -200;
   width: 100%;
   height: 100vh; }
 
@@ -137,17 +177,12 @@ footer {
   transform: translate(-50%, -50%);
   background-color: #5CA7F0; }
 
-.icon-arrow-right {
-  padding: .3em;
-  position: absolute;
-  z-index: 100;
-  -webkit-transition: -webkit-transform 0.3s;
-  transition: transform 0.3s; }
-
 .tweetList {
-  z-index: 100;
-  width: 30%;
+  z-index: -100;
+  width: 35%;
   height: 100vh;
+  top: 0;
+  left: 0;
   position: absolute;
   overflow: auto;
   -webkit-transform: translateX(-100%);
@@ -159,17 +194,47 @@ footer {
   -webkit-transform: translateX(0%);
   transform: translateX(0%); }
 
-.tweetList section {
-  padding: 2em 0; }
+.tweetListView {
+  padding: 2em 0.5em 2em 0.7em; }
+  .tweetListView:first-child {
+    padding-top: 5em; }
+  .tweetListView p:first-child {
+    margin-bottom: .4em; }
 
 .welcome {
   background-color: #5CA7F0;
-  border: 0.3em solid #182D65; }
-
-.icon-arrow-right {
-  color: white;
-  font-size: 3em;
-  background-color: #5CA7F0; }
+  border: 0.3em solid #2E6AA3; }
 
 .tweetList {
-  background-color: red; }
+  background-color: #5CA7F0;
+  color: white; }
+
+.tweetListView:nth-child(odd) {
+  background-color: #2E6AA3; }
+
+.tweetListView p:first-child {
+  font-style: italic;
+  line-height: 115%; }
+
+.tweetListView p:last-child {
+  font-size: .8em; }
+
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0; }
+
+.clearfix {
+  display: inline-block; }
+
+/* start commented backslash hack \*/
+* html .clearfix {
+  height: 1%; }
+
+.clearfix {
+  display: block; }
+
+/* close commented backslash hack */

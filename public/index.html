@@ -11,9 +11,18 @@
 
   </head>
   <body data-ng-app="indulgeApp">
-    <header class="slideDown">
-      <section class="icon-location2"></section>
-      <h1>Indulge</h1>
+
+    <header class="slideDown clearfix">
+      <h1 class="logo">
+        <section class="icon-location2"></section>
+        <section>Indulge</section>
+      </h1>
+      <section class="icon-menu"></section>
+      <ul class="clearfix">
+        <a href="#"><li class="icon-github4"></li></a>
+        <a href="#"><li class="icon-info"></li></a>
+      </ul>
+      <h2>"Visual Data Surrounding You."</h2>
     </header>
 
     <!-- <article class="welcome">
@@ -25,13 +34,57 @@
     <div class="mask is-active"></div>
 
     <main data-ng-controller="mapController">
-      <section class="icon-arrow-right"></section>
       <article class="tweetList">
-        <section class="icon-cross"></section>
-        <section data-ng-repeat = "tweet in tweets | orderBy:'-curDate'">
-          <p>{{tweet.text}}</p>
-          <p>{{tweet.curDate | date:'MMM dd, yyyy - h:mm a'}}</p>
+        <!-- <section class="tweetListView">
+          <p>"Mom and I went to the mall today and spent so much monies on new shoes. #loveher"</p>
+          <p>Tweeted on July 29, 2015 at 7:34 PM</p>
         </section>
+        <section class="tweetListView">
+          <p>"Mom and I went to the mall today and spent so much monies on new shoes. #loveher"</p>
+          <p>Tweeted on July 29, 2015 at 7:34 PM</p>
+        </section>
+        <section class="tweetListView">
+          <p>"Mom and I went to the mall today and spent so much monies on new shoes. #loveher"</p>
+          <p>Tweeted on July 29, 2015 at 7:34 PM</p>
+        </section>
+        <section class="tweetListView">
+          <p>"Mom and I went to the mall today and spent so much monies on new shoes. #loveher"</p>
+          <p>Tweeted on July 29, 2015 at 7:34 PM</p>
+        </section>
+        <section class="tweetListView">
+          <p>"Mom and I went to the mall today and spent so much monies on new shoes. #loveher"</p>
+          <p>Tweeted on July 29, 2015 at 7:34 PM</p>
+        </section>
+        <section class="tweetListView">
+          <p>"Mom and I went to the mall today and spent so much monies on new shoes. #loveher"</p>
+          <p>Tweeted on July 29, 2015 at 7:34 PM</p>
+        </section>
+        <section class="tweetListView">
+          <p>"Mom and I went to the mall today and spent so much monies on new shoes. #loveher"</p>
+          <p>Tweeted on July 29, 2015 at 7:34 PM</p>
+        </section>
+        <section class="tweetListView">
+          <p>"Mom and I went to the mall today and spent so much monies on new shoes. #loveher"</p>
+          <p>Tweeted on July 29, 2015 at 7:34 PM</p>
+        </section>
+        <section class="tweetListView">
+          <p>"Mom and I went to the mall today and spent so much monies on new shoes. #loveher"</p>
+          <p>Tweeted on July 29, 2015 at 7:34 PM</p>
+        </section>
+        <section class="tweetListView">
+          <p>"Mom and I went to the mall today and spent so much monies on new shoes. #loveher"</p>
+          <p>Tweeted on July 29, 2015 at 7:34 PM</p>
+        </section>
+        <section class="tweetListView">
+          <p>"Mom and I went to the mall today and spent so much monies on new shoes. #loveher"</p>
+          <p>Tweeted on July 29, 2015 at 7:34 PM</p>
+        </section> -->
+
+        <section class="tweetListView" data-ng-repeat = "tweet in tweets | orderBy:'-curDate'">
+          <p>"{{tweet.text}}"</p>
+          <p class="icon-twitter"> on {{tweet.curDate | date:'MMM dd, yyyy'}} at {{tweet.curDate | date:'h:mm a'}}</p>
+        </section>
+
       </article>
       <section id="map"></section>
     </main>

@@ -1,11 +1,11 @@
-$('.icon-arrow-right').on('click', function() {
-  $('.tweetList').addClass('is-active');
-  // $('body').addClass('has-active-menu');
-  // $('.mask').addClass('is-active');
-});
-
-$('.icon-cross').on('click', function() {
-  $('.tweetList').removeClass('is-active');
-//   $('body').removeClass('has-active-menu');
-//   $('.mask').removeClass('is-active');
+$('.icon-menu').on('click', function() {
+  $('.tweetList').toggleClass('is-active');
+  if ($(this).hasClass('icon-menu')) {
+    $(this).removeClass('icon-menu');
+    $(this).addClass('icon-cross');
+  }
+  else {
+    $(this).removeClass('icon-cross');
+    $(this).addClass('icon-menu');
+  }
 });
