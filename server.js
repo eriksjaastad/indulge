@@ -16,7 +16,8 @@ var client = new Twitter ({
 app.use(express.static(__dirname + '/public'));
 app.set('port', (process.env.PORT || 3000));
 
-mongo.connect('mongodb://127.0.0.1/27017', function(err, db) {   //open mongo connection
+
+mongo.connect(mongoURI, function(err, db) {   //open mongo connection
   if(err) {
     console.log(err);
   } else {
@@ -24,8 +25,9 @@ mongo.connect('mongodb://127.0.0.1/27017', function(err, db) {   //open mongo co
   }
 
   var col = db.collection('tweets');
-  client.stream('statuses/filter', {locations: '-122.41, 47.54, -122.24, 47.70'}, function(stream) {  // open twitter connection
+  client.stream('statuses/filter', {locations: '-122.41, 47.54, -122.24, 47.70'}, function(stream) {
     console.log("Twitter stream has started...\n");
+
 
     var newTweet;
     stream.on('data', function(tweet) { //start twitter DATA
