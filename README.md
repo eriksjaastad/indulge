@@ -115,7 +115,8 @@ Heroku sets up MONGOLAB_URI for you, use -
 ```
 MONGOLAB_URI
 ```
-for your database connection variable. If you want to see what that is...
+
+For your database connection variable. If you want to see what that is...
 ```
 heroku config | grep MONGOLAB_URI
 ```

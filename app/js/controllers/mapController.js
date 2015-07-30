@@ -1,6 +1,6 @@
 'use strict';
 
-var socket = io.connect(window.location.hostname);
+var socket = io.connect('http://127.0.0.1:3000');
 module.exports = function(app) {
   app.controller('mapController', ['$scope', function($scope){
 
