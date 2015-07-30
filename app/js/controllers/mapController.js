@@ -152,19 +152,14 @@ module.exports = function(app) {
         $scope.$apply();
       };
       createMarker(newTweet);
-      //console.log(newTweet.text);
-      var getNode = function(element) {
-        return document.querySelector(element);
-      };
 
-      var tweetList = getNode('#tweetList');
 
-      //var topOfList = getNode('#tweetList');
+      var listOfTweets = document.getElementsByClassName('tweetListView');
 
       var newListContent = document.createElement('section');
       newListContent.setAttribute('class','tweetListView');
       newListContent.innerHTML += '<p>"' + newTweet.text + '"</p><p class="icon-twitter"> at ' + newTweet.curDate;
-      tweetList.insertBefore(newListContent, tweetList[0]);
+      tweetList.insertBefore(newListContent, listOfTweets[0]);
 
     });
   }]);
