@@ -1,12 +1,10 @@
 var mongo = require('mongodb');
 var express = require('express');
 var app = express();
-
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
-
 var Twitter = require('twitter');
-
+var mongoURI = process.env.MONGOLAB_URI || 'mongodb://127.0.0.1/27017';
 var client = new Twitter ({
   consumer_key: process.env.TWITTER_CONSUMER_KEY,
   consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
@@ -21,7 +19,8 @@ app.get('/', function(req, res) {
   res.send('ok');
 });
 
-mongo.connect('mongodb://127.0.0.1/27017', function(err, db) {
+
+mongo.connect(mongoURI, function(err, db) {
   if(err) {
     console.log(err);
   } else {

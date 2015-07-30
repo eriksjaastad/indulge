@@ -111,10 +111,12 @@ Heroku looks for server.js by default but you can make a Procfile to make sure.
 
 # DO NOT PUT YOUR CONNECTION INFO IN YOUR CODE
 
-### Configure heroku to use MongoLab db
+Heroku sets up MONGOLAB_URI for you, use -
 ```
-heroku config:set PROD_MONGODB=mongodb://dbuser:dbpass@host1:port1,host2:port2/dbname
+MONGOLAB_URI
+```
+for your database connection variable. If you want to see what that is...
+```
+heroku config | grep MONGOLAB_URI
 ```
 
-Database user: Erik
-Database password: Tw1tt3r@ppC0deF3llow5
