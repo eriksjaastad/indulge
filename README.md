@@ -12,7 +12,7 @@ To check tweet count
 ```
 $mongo
 >use 27017
->db.tweets.counts()
+>db.tweets.count()
 ```
 
 ## Twitter
@@ -70,6 +70,17 @@ heroku  https://git.heroku.com/radiant-evermore-4137.git (push)
 origin  https://github.com/your-git-repo/indulge.git (fetch)
 origin  https://github.com/your-git-repo/indulge.git (push)
 ```
+### Seeting up config vas for Heroku
+You can use `config`, `config:set`, `config:get` and `config:unset`
+These config setting are only set per Heroku app.
+```
+heroku config:set GITHUB_USERNAME=your-git-hub-username
+```
+Too see your settings
+```
+heroku config
+```
+You can also set these in your Heroku Dashboard under 'Settings'
 
 ### Deploying to Heroku
 `git push heroku master`
@@ -92,5 +103,18 @@ Heroku looks for server.js by default but you can make a Procfile to make sure.
 `web: node index.js`
 * Use whatever file you're using ass the access file.
 
+## Mongolab
+* Make an account at https://mongolab.com/
+* I found a very easy way to add Mongolab to Heroku.
+* `heroku addons:create mongolab:sandbox`
+* MongoLab will show up in your apps dashboard
 
+# DO NOT PUT YOUR CONNECTION INFO IN YOUR CODE
 
+### Configure heroku to use MongoLab db
+```
+heroku config:set PROD_MONGODB=mongodb://dbuser:dbpass@host1:port1,host2:port2/dbname
+```
+
+Database user: Erik
+Database password: Tw1tt3r@ppC0deF3llow5
