@@ -119,11 +119,4 @@ for your database connection variable. If you want to see what that is...
 ```
 heroku config | grep MONGOLAB_URI
 ```
-mongorestore -h ds031932.mongolab.com:31932 -d heroku_pvwnc4kt -u Erik -p Tw1tt3r@ppC0deF3llow5 dump/27017/tweets.bson
 
-mongoimport -h ds031932.mongolab.com:31932 -d heroku_pvwnc4kt -c tweets -u Erik -p Tw1tt3r@ppC0deF3llow5 --file dump/27017/tweets.bson
-
-
-
-Database user: Erik
-Database password: Tw1tt3r@ppC0deF3llow5
