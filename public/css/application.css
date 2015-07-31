@@ -121,7 +121,7 @@ h1, h2 {
   font-family: "Quaver Sans", sans-serif; }
 
 header {
-  position: absolute;
+  position: fixed;
   width: 100%;
   background: -webkit-linear-gradient(90deg, #2E6AA3 10%, #5CA7F0 90%);
   background: -moz-linear-gradient(90deg, #2E6AA3 10%, #5CA7F0 90%);
@@ -132,6 +132,9 @@ header {
   color: white;
   z-index: 200;
   border-bottom: 0.3em solid #2E6AA3; }
+  @media (min-width: 35em) {
+    header {
+      position: absolute; } }
   header .logo {
     font-size: 1.6em;
     text-align: center; }
