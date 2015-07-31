@@ -38,11 +38,6 @@ mongo.connect(mongoURI, function(err, db) {   //open mongo connection
         var curTime = new Date();
         var newTweet = {
           curDate: new Date().toISOString(),
-          // curMonth: String(curTime.getMonth()),
-          // curDay: String(curTime.getDay()),
-          // curYear: String(curTime.getFullYear()),
-          // curHour: String(curTime.getHours()),
-          // curMinute: String(curTime.getMinutes()),
           text: tweet.text,
           latitute: tweet.geo.coordinates[1],
           longitude: tweet.geo.coordinates[0]
