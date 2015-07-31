@@ -1,8 +1,12 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
-  font-family: "Montserrat", sans-serif;
+  font-family: $secondary-font;
   font-size: 1em;
 }
 
 h1, h2 {
-  font-family: "Quaver Sans", sans-serif;
+  font-family: $primary-font;
 }
