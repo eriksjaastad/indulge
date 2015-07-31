@@ -43,6 +43,18 @@ table {
   border-spacing: 0; }
 
 @font-face {
+  font-family: "Quaver Sans";
+  src: url("./fonts/QuaverSans.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Quaver Serif";
+  src: url("./fonts/QuaverSerif.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
   font-family: "Montserrat";
   src: url("./fonts/Montserrat-Regular.ttf") format("truetype");
   font-weight: normal;
@@ -102,10 +114,22 @@ body {
   font-family: "Montserrat", sans-serif;
   font-size: 1em; }
 
+h1, h2 {
+  font-family: "Quaver Sans", sans-serif; }
+
 header {
   position: absolute;
   width: 100%;
-  background-color: #5CA7F0;
+  background: -webkit-linear-gradient(90deg, #2E6AA3 10%, #5CA7F0 90%);
+  /* Chrome 10+, Saf5.1+ */
+  background: -moz-linear-gradient(90deg, #2E6AA3 10%, #5CA7F0 90%);
+  /* FF3.6+ */
+  background: -ms-linear-gradient(90deg, #2E6AA3 10%, #5CA7F0 90%);
+  /* IE10 */
+  background: -o-linear-gradient(90deg, #2E6AA3 10%, #5CA7F0 90%);
+  /* Opera 11.10+ */
+  background: linear-gradient(90deg, #2E6AA3 10%, #5CA7F0 90%);
+  /* W3C */
   padding: 1em 0;
   color: white;
   z-index: 200;
@@ -113,6 +137,9 @@ header {
   header .logo {
     font-size: 1.6em;
     text-align: center; }
+    header .logo .logoText {
+      font-size: 1.5em;
+      text-transform: uppercase; }
     @media (min-width: 35em) {
       header .logo {
         position: absolute;
@@ -121,7 +148,10 @@ header {
         top: -.6em;
         right: .7em;
         padding: 3em 1em 1em 1em;
-        border: 0.2em solid #2E6AA3; } }
+        border: 0.2em solid #2E6AA3; }
+        header .logo .logoText {
+          font-size: 1.8em;
+          text-transform: none; } }
     header .logo .icon-location2 {
       display: none;
       font-size: 2.5em;
@@ -132,9 +162,11 @@ header {
   header h2 {
     display: none;
     text-align: center;
-    font-size: 1.3em; }
+    font-size: 2em;
+    font-style: italic; }
     @media (min-width: 35em) {
       header h2 {
+        margin-top: .2em;
         display: block; } }
   header .icon-menu, header .icon-cross {
     float: left;
@@ -153,7 +185,7 @@ header {
         header a:last-child {
           margin: 0 2.5em 0 0.4em; } }
   header .icon-menu, header .icon-cross {
-    font-size: 1.6em; }
+    font-size: 2.2em; }
     header .icon-menu:hover, header .icon-cross:hover {
       cursor: pointer; }
   header:hover .logo {
@@ -199,8 +231,10 @@ footer {
 
 .tweetList {
   z-index: 100;
+  max-width: 100vw;
   width: 100%;
   height: 100vh;
+  overflow-x: hidden;
   top: 0;
   left: 0;
   position: absolute;
@@ -211,6 +245,7 @@ footer {
   transition: transform 0.3s; }
   @media (min-width: 35em) {
     .tweetList {
+      max-width: 35%;
       width: 35%; } }
 
 .tweetList.is-active {
@@ -220,13 +255,14 @@ footer {
 .tweetListView {
   padding: 2em 0.5em 2em 0.7em; }
   .tweetListView:first-child {
-    padding-top: 5em; }
+    padding-top: 6em; }
   .tweetListView p:first-child {
     margin-bottom: .4em; }
 
 .welcome {
   background-color: #5CA7F0;
-  border: 0.3em solid #2E6AA3; }
+  border: 0.3em solid #2E6AA3;
+  text-align: center; }
 
 .tweetList {
   background-color: #5CA7F0;
@@ -241,6 +277,25 @@ footer {
 
 .tweetListView p:last-child {
   font-size: .8em; }
+
+.mask {
+  position: fixed;
+  z-index: 50;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  width: 0;
+  height: 0;
+  background-color: #000;
+  opacity: 0;
+  transition: opacity 0.3s, width 0s 0.3s, height 0s 0.3s; }
+
+.mask.is-active {
+  z-index: 200;
+  width: 100%;
+  height: 100%;
+  opacity: .7;
+  transition: opacity 0.3s; }
 
 .clearfix:after {
   visibility: hidden;

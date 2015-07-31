@@ -24,66 +24,23 @@
       </ul>
       <h1 class="logo">
         <section class="icon-location2"></section>
-        <section>Indulge</section>
+        <section class="logoText">Indulge</section>
       </h1>
-      <h2>"Visual Data Surrounding You."</h2>
+      <h2>Visual Data Surrounding You</h2>
     </header>
     <div></div>
 
-    <!-- <article class="welcome">
+    <article class="welcome">
       <h1>Welcome to Indulge</h1>
-      <p>Indulge is a platform that allows you to view Twitter information visually. Use it to find out what events are happening in your city, what people are saying in certain areas, and what areas are most populated.</p>
+      <p>Indulge is a platform that visually displays surrounding Twitter data.</p>
+      <p>Use it to find out what events are happening in your city, what people are saying in certain areas, and what neighborhoods are most populated.</p>
       <button class="activate">Start Indulging</button>
-    </article> -->
+    </article>
 
     <div class="mask is-active"></div>
 
     <main data-ng-controller="mapController">
       <article class="tweetList" id="tweetList">
-        <!-- <section class="tweetListView">
-          <p>"Mom and I went to the mall today and spent so much monies on new shoes. #loveher"</p>
-          <p>Tweeted on July 29, 2015 at 7:34 PM</p>
-        </section>
-        <section class="tweetListView">
-          <p>"Mom and I went to the mall today and spent so much monies on new shoes. #loveher"</p>
-          <p>Tweeted on July 29, 2015 at 7:34 PM</p>
-        </section>
-        <section class="tweetListView">
-          <p>"Mom and I went to the mall today and spent so much monies on new shoes. #loveher"</p>
-          <p>Tweeted on July 29, 2015 at 7:34 PM</p>
-        </section>
-        <section class="tweetListView">
-          <p>"Mom and I went to the mall today and spent so much monies on new shoes. #loveher"</p>
-          <p>Tweeted on July 29, 2015 at 7:34 PM</p>
-        </section>
-        <section class="tweetListView">
-          <p>"Mom and I went to the mall today and spent so much monies on new shoes. #loveher"</p>
-          <p>Tweeted on July 29, 2015 at 7:34 PM</p>
-        </section>
-        <section class="tweetListView">
-          <p>"Mom and I went to the mall today and spent so much monies on new shoes. #loveher"</p>
-          <p>Tweeted on July 29, 2015 at 7:34 PM</p>
-        </section>
-        <section class="tweetListView">
-          <p>"Mom and I went to the mall today and spent so much monies on new shoes. #loveher"</p>
-          <p>Tweeted on July 29, 2015 at 7:34 PM</p>
-        </section>
-        <section class="tweetListView">
-          <p>"Mom and I went to the mall today and spent so much monies on new shoes. #loveher"</p>
-          <p>Tweeted on July 29, 2015 at 7:34 PM</p>
-        </section>
-        <section class="tweetListView">
-          <p>"Mom and I went to the mall today and spent so much monies on new shoes. #loveher"</p>
-          <p>Tweeted on July 29, 2015 at 7:34 PM</p>
-        </section>
-        <section class="tweetListView">
-          <p>"Mom and I went to the mall today and spent so much monies on new shoes. #loveher"</p>
-          <p>Tweeted on July 29, 2015 at 7:34 PM</p>
-        </section>
-        <section class="tweetListView">
-          <p>"Mom and I went to the mall today and spent so much monies on new shoes. #loveher"</p>
-          <p>Tweeted on July 29, 2015 at 7:34 PM</p>
-        </section> -->
 
         <section class="tweetListView" data-ng-repeat = "tweet in tweets | orderBy:'-curDate'">
           <p>"{{tweet.text}}"</p>

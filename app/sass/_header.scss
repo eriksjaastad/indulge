@@ -1,21 +1,22 @@
 header {
   position: absolute;
   width: 100%;
-  background-color: $primary-color;
+  background: -webkit-linear-gradient(90deg, $secondary-color 10%, $primary-color 90%); /* Chrome 10+, Saf5.1+ */
+  background:    -moz-linear-gradient(90deg, $secondary-color 10%, $primary-color 90%); /* FF3.6+ */
+  background:     -ms-linear-gradient(90deg, $secondary-color 10%, $primary-color 90%); /* IE10 */
+  background:      -o-linear-gradient(90deg, $secondary-color 10%, $primary-color 90%); /* Opera 11.10+ */
+  background:         linear-gradient(90deg, $secondary-color 10%, $primary-color 90%); /* W3C */
   padding: 1em 0;
   color: white;
   z-index: 200;
   border-bottom: .3em solid $secondary-color;
   .logo {
     font-size: 1.6em;
-    // position: absolute;
     text-align: center;
-    // z-index: -100;
-    // background-color:$primary-color;
-    // top: 0;
-    // right: 2em;
-    // padding: 3em 1em 1em 1em;
-    // border: .2em solid $secondary-color;
+    .logoText {
+      font-size: 1.5em;
+      text-transform: uppercase;
+    }
     @media (min-width: 35em) {
       position: absolute;
       z-index: -1;
@@ -24,6 +25,10 @@ header {
       right: .7em;
       padding: 3em 1em 1em 1em;
       border: .2em solid $secondary-color;
+      .logoText {
+        font-size: 1.8em;
+        text-transform: none;
+      }
     }
     .icon-location2 {
       display: none;
@@ -37,8 +42,10 @@ header {
   h2 {
     display: none;
     text-align: center;
-    font-size: 1.3em;
+    font-size: 2em;
+    font-style: italic;
     @media (min-width: 35em) {
+      margin-top: .2em;
       display: block;
     }
   }
@@ -64,7 +71,7 @@ header {
     }
   }
   .icon-menu, .icon-cross {
-    font-size: 1.6em;
+    font-size: 2.2em;
     &:hover {
       cursor: pointer;
     }

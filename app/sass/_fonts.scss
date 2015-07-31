@@ -1,4 +1,18 @@
 @font-face {
+  font-family: "Quaver Sans";
+  src: url("./fonts/QuaverSans.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Quaver Serif";
+  src: url("./fonts/QuaverSerif.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
   font-family: "Montserrat";
   src: url("./fonts/Montserrat-Regular.ttf") format("truetype");
   font-weight: normal;
