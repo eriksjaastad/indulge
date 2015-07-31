@@ -81,7 +81,7 @@ module.exports = function(app) {
         }
       ]
 
-      $scope.map = $('#map').gmap({ 'zoom' : 12, 'center': '47.623581, -122.335661' }).bind('init', function(evt, map){
+      $scope.map = $('#map').gmap({ 'zoom' : 12, 'center': '47.623581, -122.335661', 'styles' : stylesArray }).bind('init', function(evt, map){
 
         for (var i = 0; i < lukesData.length; i++){
 

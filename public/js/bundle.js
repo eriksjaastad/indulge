@@ -48,9 +48,9 @@
 	__webpack_require__(11);
 	__webpack_require__(7);
 	__webpack_require__(5);
-	__webpack_require__(10);
 	__webpack_require__(8);
-	module.exports = __webpack_require__(9);
+	__webpack_require__(9);
+	module.exports = __webpack_require__(10);
 
 
 /***/ },
@@ -29538,7 +29538,7 @@
 	        }
 	      ]
 
-	      $scope.map = $('#map').gmap({ 'zoom' : 12, 'center': '47.623581, -122.335661' }).bind('init', function(evt, map){
+	      $scope.map = $('#map').gmap({ 'zoom' : 12, 'center': '47.623581, -122.335661', 'styles' : stylesArray }).bind('init', function(evt, map){
 
 	        for (var i = 0; i < lukesData.length; i++){
 
