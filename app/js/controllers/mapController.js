@@ -8,7 +8,6 @@ module.exports = function(app) {
     console.log('socket connected');
     socket.on('output', function(lukesData) {
       $scope.tweets = lukesData;
-      console.log(lukesData);
 
       // -----Make Google Map-----
 
@@ -109,7 +108,7 @@ module.exports = function(app) {
         });
 
         google.maps.event.addListener(marker, 'click', function(){
-          infoWindow.setContent('<h2>' + marker.title + '</h2>');
+          infoWindow.setContent('<p>' + marker.title + '</p>');
           infoWindow.open($scope.map, marker);
         });
 
@@ -158,9 +157,50 @@ module.exports = function(app) {
 
       var newListContent = document.createElement('section');
       newListContent.setAttribute('class','tweetListView');
-      newListContent.innerHTML += '<p>"' + newTweet.text + '"</p><p class="icon-twitter"> at ' + newTweet.curDate;
+      newListContent.innerHTML += '<p>"' + newTweet.text + '"</p><p class="icon-twitter"> on ' + newTweet.curDate + '</p>';
+      //newListContent.innerHTML += '<p>"' + newTweet.text + '"</p><p class="icon-twitter"> on ' + formatMonth(newTweet.curMonth) + newTweet.curDay + ', ' + newTweet.curYear + ' at ' + formatTime(newTweet.curHour, newTweet.curMinute) + '</p>';
       tweetList.insertBefore(newListContent, listOfTweets[0]);
 
     });
   }]);
 };
+
+function formatMonth(month) {
+  if (month == 1) {
+    return 'Jan ';
+  } else if (month == 2) {
+    return 'Feb ';
+  } else if (month == 3) {
+    return 'Mar ';
+  } else if (month == 4) {
+    return 'Apr ';
+  } else if (month == 5) {
+    return 'May ';
+  } else if (month == 6) {
+    return 'Jun ';
+  } else if (month == 7) {
+    return 'Jul ';
+  } else if (month == 8) {
+    return 'Aug ';
+  } else if (month == 9) {
+    return 'Sept ';
+  } else if (month == 10) {
+    return 'Oct ';
+  } else if (month == 11) {
+    return 'Nov ';
+  } else if (month == 12) {
+    return 'Dec ';
+  }
+}
+
+function formatTime(currentHour, currentMinute) {
+  // if (currentMinute < 10) {
+  //   currentMinute = "0" + currentMinute;
+  // }
+  if (currentHour > 12) {
+    currentHour = currentHour - 12;
+    return currentHour + ':' + currentMinute + ' PM';
+  } else {
+    return currentHour + ':' + currentMinute + ' AM';
+  }
+}

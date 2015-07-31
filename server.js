@@ -1,3 +1,5 @@
+'use strict';
+
 var mongo = require('mongodb');
 var express = require('express');
 var app = express();
@@ -16,7 +18,6 @@ var client = new Twitter ({
 app.use(express.static(__dirname + '/public'));
 app.set('port', (process.env.PORT || 3000));
 
-
 mongo.connect(mongoURI, function(err, db) {   //open mongo connection
   if(err) {
     console.log(err);
@@ -25,18 +26,21 @@ mongo.connect(mongoURI, function(err, db) {   //open mongo connection
   }
 
   var col = db.collection('tweets');
-  client.stream('statuses/filter', {locations: '-122.41, 47.54, -122.24, 47.70'}, function(stream) {
+  client.stream('statuses/filter', {locations: '-122.41, 47.54, -122.24, 47.70'}, function(stream) {    //start twitter data stream
     console.log("Twitter stream has started...\n");
 
-
-    var newTweet;
     stream.on('data', function(tweet) { //start twitter DATA
       //sanity check for incoming data
       console.log('searching for data...');
       if (tweet.geo && (tweet.text.toLowerCase().indexOf('#hire') < 0 ) && (tweet.text.toLowerCase().indexOf('#hiring') < 0 ) && (tweet.text.toLowerCase().indexOf('#job') < 0)) {
-
-        newTweet = {
+        var curTime = new Date();
+        var newTweet = {
           curDate: new Date().toISOString(),
+          // curMonth: String(curTime.getMonth()),
+          // curDay: String(curTime.getDay()),
+          // curYear: String(curTime.getFullYear()),
+          // curHour: String(curTime.getHours()),
+          // curMinute: String(curTime.getMinutes()),
           text: tweet.text,
           latitute: tweet.geo.coordinates[1],
           longitude: tweet.geo.coordinates[0]
@@ -52,7 +56,6 @@ mongo.connect(mongoURI, function(err, db) {   //open mongo connection
       //sanity check for connection start
       console.log('A new user has connected!\n');
 
-
       //send tweets that are already in db to client
       col.find().toArray(function(err, result) {
         if (err) {
@@ -65,7 +68,6 @@ mongo.connect(mongoURI, function(err, db) {   //open mongo connection
         console.log('User disconnected!\n');
       });
     }); //end socket connection
-
   }); //end twitter stream
 }); //end mongo connection
 
