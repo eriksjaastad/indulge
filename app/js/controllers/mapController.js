@@ -91,19 +91,10 @@ module.exports = function(app) {
             $('#map').gmap('openInfoWindow', { 'content' : lukesData[this.id].text }, this);
           });
 
-
-          // $('#map').gmap('addMarker', { 'position': 'lukesData[i]., -122.335661' } );
-
         }
         $('#map').gmap('set', 'MarkerClusterer', new MarkerClusterer(map, $(this).gmap('get', 'markers')));
         });
 
-
-        // $('#map').gmap('addMarker', {
-        //   'position': new google.maps.LatLng(lat, lng)
-        // }).click(function() {
-        //   $('#map').gmap('openInfoWindow', { content : 'Hello world!' }, this);
-        // });
 
       // var mapOptions = {
       //   zoom: 12,
@@ -169,29 +160,40 @@ module.exports = function(app) {
 //----------------
 
     socket.on('newTweet', function(newTweet) {
-      var infoWindow = new google.maps.InfoWindow();
-      var createMarker = function (info) {
-        var marker = new google.maps.Marker({
-          map: $scope.map,
-          position: new google.maps.LatLng(info.longitude, info.latitute),
-          title: info.text
-        });
 
-        google.maps.event.addListener(marker, 'click', function(){
-          infoWindow.setContent('<h2>' + marker.title + '</h2>');
-          infoWindow.open($scope.map, marker);
-        });
+      $('#map').gmap('addMarker', {
+            'position': new google.maps.LatLng(newTweet.longitude, newTweet.latitute)
+          }).click(function() {
+            $('#map').gmap('openInfoWindow', { 'content' : newTweet.text }, this);
+          });
 
-        $scope.markers.push(marker);
 
-        $scope.openInfoWindow = function(e, selectedMarker){
-          e.preventDefault();
-          google.maps.event.trigger(selectedMarker, 'click');
-        }
 
-        $scope.$apply();
-      };
-      createMarker(newTweet);
+
+
+      // var infoWindow = new google.maps.InfoWindow();
+      // var createMarker = function (info) {
+      //   var marker = new google.maps.Marker({
+      //     map: $scope.map,
+      //     position: new google.maps.LatLng(info.longitude, info.latitute),
+      //     title: info.text
+      //   });
+
+      //   google.maps.event.addListener(marker, 'click', function(){
+      //     infoWindow.setContent('<h2>' + marker.title + '</h2>');
+      //     infoWindow.open($scope.map, marker);
+      //   });
+
+      //   $scope.markers.push(marker);
+
+      //   $scope.openInfoWindow = function(e, selectedMarker){
+      //     e.preventDefault();
+      //     google.maps.event.trigger(selectedMarker, 'click');
+      //   }
+
+      //   $scope.$apply();
+      // };
+      // createMarker(newTweet);
 
 
       var listOfTweets = document.getElementsByClassName('tweetListView');
