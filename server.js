@@ -1,10 +1,10 @@
-var mongo = require('mongodb');
-var express = require('express');
-var app = express();
-//var http = require('http').Server(app);
-//var io = require('socket.io')(http);
-var Twitter = require('twitter');
-var mongoURI = process.env.MONGOLAB_URI || 'mongodb://127.0.0.1/27017';
+// var mongo = require('mongodb');
+// var express = require('express');
+// var app = express();
+// var http = require('http').Server(app);
+// var io = require('socket.io')(http);
+// var Twitter = require('twitter');
+// var mongoURI = process.env.MONGOLAB_URI || 'mongodb://127.0.0.1/27017';
 
 var client = new Twitter ({
   consumer_key: process.env.TWITTER_CONSUMER_KEY,
@@ -13,8 +13,8 @@ var client = new Twitter ({
   access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
 });
 
-app.use(express.static(__dirname + '/public'));
-app.set('port', (process.env.PORT || 3000));
+// app.use(express.static(__dirname + '/public'));
+// app.set('port', (process.env.PORT || 3000));
 
 
 mongo.connect(mongoURI, function(err, db) {   //open mongo connection
