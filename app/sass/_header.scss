@@ -1,5 +1,8 @@
 header {
-  position: absolute;
+  position: fixed;
+  @media (min-width: 35em) {
+    position: absolute;
+  }
   width: 100%;
   @include gradient;
   padding: .9em 0 .7em 0;
