@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 'use strict';
 
 var mongo = require('mongodb');
@@ -8,25 +8,17 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var Twitter = require('twitter');
 var mongoURI = process.env.MONGOLAB_URI || 'mongodb://127.0.0.1/27017';
-=======
-// var mongo = require('mongodb');
-// var express = require('express');
-// var app = express();
-// var http = require('http').Server(app);
-// var io = require('socket.io')(http);
-// var Twitter = require('twitter');
-// var mongoURI = process.env.MONGOLAB_URI || 'mongodb://127.0.0.1/27017';
->>>>>>> 04a811dc603460ecc494fbf6af47a4a19eb21bbe
 
-// var client = new Twitter ({
-//   consumer_key: process.env.TWITTER_CONSUMER_KEY,
-//   consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
-//   access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY,
-//   access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
-// });
 
-// app.use(express.static(__dirname + '/public'));
-// app.set('port', (process.env.PORT || 3000));
+var client = new Twitter ({
+  consumer_key: process.env.TWITTER_CONSUMER_KEY,
+  consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
+  access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY,
+  access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
+});
+
+app.use(express.static(__dirname + '/public'));
+app.set('port', (process.env.PORT || 3000));
 
 mongo.connect(mongoURI, function(err, db) {   //open mongo connection
   if(err) {
