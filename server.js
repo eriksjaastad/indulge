@@ -1,8 +1,8 @@
 var mongo = require('mongodb');
 var express = require('express');
 var app = express();
-var http = require('http').Server(app);
-var io = require('socket.io')(http);
+//var http = require('http').Server(app);
+//var io = require('socket.io')(http);
 var Twitter = require('twitter');
 var mongoURI = process.env.MONGOLAB_URI || 'mongodb://127.0.0.1/27017';
 
