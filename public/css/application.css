@@ -170,9 +170,11 @@ header {
   header .icon-menu, header .icon-cross {
     float: left;
     margin-left: .4em;
-    font-size: 2em; }
+    font-size: 2em;
+    transition: color 0.3s ease; }
     header .icon-menu:hover, header .icon-cross:hover {
-      cursor: pointer; }
+      cursor: pointer;
+      color: #FF8F8B; }
   header ul {
     float: right; }
   header li {
@@ -180,12 +182,15 @@ header {
   header a {
     text-decoration: none;
     color: white;
-    font-size: 1.6em; }
+    font-size: 1.6em;
+    transition: color 0.3s ease; }
     header a:last-child {
       margin: 0 0.4em 0 0.4em; }
       @media (min-width: 35em) {
         header a:last-child {
           margin: 0 2.5em 0 0.4em; } }
+    header a:hover {
+      color: #FF8F8B; }
   header:hover .logo {
     top: -.2em;
     transition: top 0.3s; }
@@ -198,6 +203,11 @@ header {
   width: 100%;
   height: 100vh; }
 
+.markerTitle {
+  font-style: italic;
+  font-size: 1.2em;
+  max-width: 15em; }
+
 .welcome {
   padding: 2em;
   z-index: 300;
@@ -208,33 +218,38 @@ header {
   left: 0; }
   @media (min-width: 35em) {
     .welcome {
+      padding: 4em;
       width: auto;
       height: auto;
       top: 50%;
       left: 50%;
       -webkit-transform: translate(-50%, -50%);
       transform: translate(-50%, -50%); } }
-  .welcome button {
-    padding: .5em; }
+  .welcome a {
+    padding: 0.4em 1em 0.2em 1em;
+    transition: background-color 0.3s ease; }
+    .welcome a:hover {
+      background-color: #FF8F8B; }
   .welcome p {
-    margin: 1em 0; }
+    margin: 0.8em 0 1.4em 0; }
 
 .tweetList {
+  overflow-x: hidden;
   z-index: 100;
   max-width: 100vw;
   width: 100%;
   height: 100vh;
-  overflow-x: hidden;
   top: 0;
   left: 0;
   position: absolute;
-  overflow: auto;
+  overflow-y: auto;
   -webkit-transform: translateX(-100%);
   transform: translateX(-100%);
   -webkit-transition: -webkit-transform 0.3s;
   transition: transform 0.3s; }
   @media (min-width: 35em) {
     .tweetList {
+      overflow-x: hidden;
       max-width: 35%;
       width: 35%; } }
 
@@ -262,29 +277,32 @@ header {
   .welcome p {
     font-size: 1.2em;
     line-height: 110%; }
-  .welcome button {
+  .welcome a {
     color: white;
+    text-decoration: none;
     font-family: "Quaver Sans", sans-serif;
     font-size: 2em;
-    background-color: transparent;
-    border: .1em solid white;
-    padding: .5em; }
-    .welcome button:hover {
-      cursor: pointer; }
+    border: .1em solid white; }
 
 .tweetList {
-  background-color: #5CA7F0;
   color: white; }
+  .tweetList:hover {
+    cursor: default; }
 
-.tweetListView:nth-child(odd) {
-  background-color: #2E6AA3; }
-
-.tweetListView p:first-child {
-  font-style: italic;
-  line-height: 115%; }
-
-.tweetListView p:last-child {
-  font-size: .8em; }
+.tweetListView {
+  opacity: .9;
+  transition: opacity 0.2s ease; }
+  .tweetListView:hover {
+    opacity: 1; }
+  .tweetListView:nth-child(odd) {
+    background-color: #2E6AA3; }
+  .tweetListView:nth-child(even) {
+    background-color: #5CA7F0; }
+  .tweetListView p:first-child {
+    font-style: italic;
+    line-height: 115%; }
+  .tweetListView p:last-child {
+    font-size: .8em; }
 
 .mask {
   position: fixed;
@@ -299,7 +317,7 @@ header {
   transition: opacity 0.3s, width 0s 0.3s, height 0s 0.3s; }
 
 .mask.is-active {
-  z-index: 200;
+  z-index: -100;
   width: 100%;
   height: 100%;
   opacity: .7;

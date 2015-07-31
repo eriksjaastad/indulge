@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/eriksjaastad/indulge",
   "dependencies": {
+    "angular-route": "^1.4.3",
     "angular": "^1.4.3",
     "express": "^4.12.4",
     "mongodb": "^2.0.39",

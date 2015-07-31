@@ -50,8 +50,10 @@ header {
     float: left;
     margin-left: .4em;
     font-size: 2em;
+    transition: color .3s ease;
     &:hover {
       cursor: pointer;
+      color: $active-color;
     }
   }
   ul{
@@ -64,11 +66,15 @@ header {
     text-decoration: none;
     color: white;
     font-size: 1.6em;
+    transition: color .3s ease;
     &:last-child {
       margin: 0 .4em 0 .4em;
       @media (min-width: 35em) {
         margin: 0 2.5em 0 .4em;
       }
+    }
+    &:hover {
+      color: $active-color;
     }
   }
   &:hover .logo{

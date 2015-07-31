@@ -11,29 +11,35 @@
     font-size: 1.2em;
     line-height: 110%;
   }
-  button {
+  a {
     color: white;
+    text-decoration: none;
     font-family: $primary-font;
     font-size: 2em;
-    background-color: transparent;
     border: .1em solid white;
-    padding: .5em;
-    &:hover {
-      cursor: pointer;
-    }
   }
 }
 
 // -----LIST OF TWEETS-----
 
 .tweetList {
-  background-color: $primary-color;
   color: white;
+  &:hover {
+    cursor: default;
+  }
 }
 
 .tweetListView {
+  opacity: .9;
+  transition: opacity .2s ease;
+  &:hover {
+    opacity: 1;
+  }
   &:nth-child(odd) {
     background-color: $secondary-color;
+  }
+  &:nth-child(even) {
+    background-color: $primary-color;
   }
   p:first-child {
     font-style: italic;
@@ -60,7 +66,7 @@
 }
 
 .mask.is-active {
-  z-index: 200;
+  z-index: -100;
   width: 100%;
   height: 100%;
   opacity: .7;

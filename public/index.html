@@ -16,7 +16,7 @@
       <section class="icon-menu"></section>
       <ul class="clearfix">
         <a href="https://github.com/eriksjaastad/indulge" target="_blank"><li class="icon-github4"></li></a>
-        <a href="#"><li class="icon-info"></li></a>
+        <a href="#/about"><li class="icon-info"></li></a>
       </ul>
       <h1 class="logo">
         <section class="icon-location2"></section>
@@ -26,14 +26,14 @@
     </header>
     <!-- <div class="mask is-active"></div> -->
 
-
     <main data-ng-controller="mapController">
-
       <!-- <article class="welcome" data-about-directive></article> -->
 
       <article class="tweetList" id="tweetList" data-tweets-directive></article>
-
       <section id="map"></section>
+
+      <div data-ng-view></div>
+
     </main>
 
 

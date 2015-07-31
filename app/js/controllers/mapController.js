@@ -108,7 +108,7 @@ module.exports = function(app) {
         });
 
         google.maps.event.addListener(marker, 'click', function(){
-          infoWindow.setContent('<p>' + marker.title + '</p>');
+          infoWindow.setContent('<p class="markerTitle icon-twitter"> - "' + marker.title + '"</p>');
           infoWindow.open($scope.map, marker);
         });
 
