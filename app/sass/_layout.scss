@@ -16,8 +16,10 @@
 
 .tweetList {
   z-index: 100;
+  max-width: 100vw;
   width: 100%;
   height: 100vh;
+  overflow-x: hidden;
   top: 0;
   left: 0;
   position: absolute;
@@ -27,6 +29,7 @@
   -webkit-transition: -webkit-transform .3s;
   transition: transform .3s;
   @media (min-width: 35em) {
+    max-width: 35%;
     width: 35%;
   }
 }
@@ -39,7 +42,7 @@
 .tweetListView {
   padding: 2em .5em 2em .7em;
   &:first-child {
-    padding-top: 5em;
+    padding-top: 6em;
   }
   p:first-child {
     margin-bottom: .4em;
