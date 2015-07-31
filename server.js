@@ -6,12 +6,12 @@
 // var Twitter = require('twitter');
 // var mongoURI = process.env.MONGOLAB_URI || 'mongodb://127.0.0.1/27017';
 
-var client = new Twitter ({
-  consumer_key: process.env.TWITTER_CONSUMER_KEY,
-  consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
-  access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY,
-  access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
-});
+// var client = new Twitter ({
+//   consumer_key: process.env.TWITTER_CONSUMER_KEY,
+//   consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
+//   access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY,
+//   access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
+// });
 
 // app.use(express.static(__dirname + '/public'));
 // app.set('port', (process.env.PORT || 3000));
