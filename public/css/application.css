@@ -110,6 +110,9 @@ table {
 .icon-github4:before {
   content: "\eab4"; }
 
+* {
+  box-sizing: border-box; }
+
 body {
   font-family: "Montserrat", sans-serif;
   font-size: 1em; }
@@ -121,16 +124,11 @@ header {
   position: absolute;
   width: 100%;
   background: -webkit-linear-gradient(90deg, #2E6AA3 10%, #5CA7F0 90%);
-  /* Chrome 10+, Saf5.1+ */
   background: -moz-linear-gradient(90deg, #2E6AA3 10%, #5CA7F0 90%);
-  /* FF3.6+ */
   background: -ms-linear-gradient(90deg, #2E6AA3 10%, #5CA7F0 90%);
-  /* IE10 */
   background: -o-linear-gradient(90deg, #2E6AA3 10%, #5CA7F0 90%);
-  /* Opera 11.10+ */
   background: linear-gradient(90deg, #2E6AA3 10%, #5CA7F0 90%);
-  /* W3C */
-  padding: 1em 0;
+  padding: 0.9em 0 0.7em 0;
   color: white;
   z-index: 200;
   border-bottom: 0.3em solid #2E6AA3; }
@@ -138,6 +136,7 @@ header {
     font-size: 1.6em;
     text-align: center; }
     header .logo .logoText {
+      margin-top: .1em;
       font-size: 1.5em;
       text-transform: uppercase; }
     @media (min-width: 35em) {
@@ -147,30 +146,33 @@ header {
         background-color: #5CA7F0;
         top: -.6em;
         right: .7em;
-        padding: 3em 1em 1em 1em;
+        padding: 3em 1em 0.5em 1em;
         border: 0.2em solid #2E6AA3; }
         header .logo .logoText {
+          margin-top: 0;
           font-size: 1.8em;
           text-transform: none; } }
     header .logo .icon-location2 {
       display: none;
       font-size: 2.5em;
-      margin-bottom: .2em; }
+      margin-bottom: .3em; }
       @media (min-width: 35em) {
         header .logo .icon-location2 {
           display: block; } }
   header h2 {
     display: none;
     text-align: center;
-    font-size: 2em;
+    font-size: 2.2em;
     font-style: italic; }
     @media (min-width: 35em) {
       header h2 {
-        margin-top: .2em;
         display: block; } }
   header .icon-menu, header .icon-cross {
     float: left;
-    margin-left: .4em; }
+    margin-left: .4em;
+    font-size: 2em; }
+    header .icon-menu:hover, header .icon-cross:hover {
+      cursor: pointer; }
   header ul {
     float: right; }
   header li {
@@ -184,31 +186,9 @@ header {
       @media (min-width: 35em) {
         header a:last-child {
           margin: 0 2.5em 0 0.4em; } }
-  header .icon-menu, header .icon-cross {
-    font-size: 2.2em; }
-    header .icon-menu:hover, header .icon-cross:hover {
-      cursor: pointer; }
   header:hover .logo {
     top: -.2em;
     transition: top 0.3s; }
-
-footer {
-  padding: .6em 0;
-  color: white;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  z-index: 100;
-  background-color: #182D65; }
-  footer p {
-    float: left; }
-
-.footerLinks {
-  float: right; }
-  .footerLinks a {
-    color: white;
-    text-decoration: none;
-    margin-right: .4em; }
 
 #map {
   z-index: -1000;
@@ -219,15 +199,25 @@ footer {
   height: 100vh; }
 
 .welcome {
+  padding: 2em;
   z-index: 300;
   position: absolute;
-  width: 40%;
-  height: 40%;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translateX(-50%, -50%);
-  transform: translate(-50%, -50%);
-  background-color: #5CA7F0; }
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0; }
+  @media (min-width: 35em) {
+    .welcome {
+      width: auto;
+      height: auto;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%); } }
+  .welcome button {
+    padding: .5em; }
+  .welcome p {
+    margin: 1em 0; }
 
 .tweetList {
   z-index: 100;
@@ -260,9 +250,27 @@ footer {
     margin-bottom: .4em; }
 
 .welcome {
-  background-color: #5CA7F0;
-  border: 0.3em solid #2E6AA3;
+  color: white;
+  background: -webkit-linear-gradient(90deg, #2E6AA3 10%, #5CA7F0 90%);
+  background: -moz-linear-gradient(90deg, #2E6AA3 10%, #5CA7F0 90%);
+  background: -ms-linear-gradient(90deg, #2E6AA3 10%, #5CA7F0 90%);
+  background: -o-linear-gradient(90deg, #2E6AA3 10%, #5CA7F0 90%);
+  background: linear-gradient(90deg, #2E6AA3 10%, #5CA7F0 90%);
   text-align: center; }
+  .welcome h1 {
+    font-size: 3.5em; }
+  .welcome p {
+    font-size: 1.2em;
+    line-height: 110%; }
+  .welcome button {
+    color: white;
+    font-family: "Quaver Sans", sans-serif;
+    font-size: 2em;
+    background-color: transparent;
+    border: .1em solid white;
+    padding: .5em; }
+    .welcome button:hover {
+      cursor: pointer; }
 
 .tweetList {
   background-color: #5CA7F0;

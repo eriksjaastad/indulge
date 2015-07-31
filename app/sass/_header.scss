@@ -1,12 +1,8 @@
 header {
   position: absolute;
   width: 100%;
-  background: -webkit-linear-gradient(90deg, $secondary-color 10%, $primary-color 90%); /* Chrome 10+, Saf5.1+ */
-  background:    -moz-linear-gradient(90deg, $secondary-color 10%, $primary-color 90%); /* FF3.6+ */
-  background:     -ms-linear-gradient(90deg, $secondary-color 10%, $primary-color 90%); /* IE10 */
-  background:      -o-linear-gradient(90deg, $secondary-color 10%, $primary-color 90%); /* Opera 11.10+ */
-  background:         linear-gradient(90deg, $secondary-color 10%, $primary-color 90%); /* W3C */
-  padding: 1em 0;
+  @include gradient;
+  padding: .9em 0 .7em 0;
   color: white;
   z-index: 200;
   border-bottom: .3em solid $secondary-color;
@@ -14,6 +10,7 @@ header {
     font-size: 1.6em;
     text-align: center;
     .logoText {
+      margin-top: .1em;
       font-size: 1.5em;
       text-transform: uppercase;
     }
@@ -23,9 +20,10 @@ header {
       background-color:$primary-color;
       top: -.6em;
       right: .7em;
-      padding: 3em 1em 1em 1em;
+      padding: 3em 1em .5em 1em;
       border: .2em solid $secondary-color;
       .logoText {
+        margin-top: 0;
         font-size: 1.8em;
         text-transform: none;
       }
@@ -33,7 +31,7 @@ header {
     .icon-location2 {
       display: none;
       font-size: 2.5em;
-      margin-bottom: .2em;
+      margin-bottom: .3em;
       @media (min-width: 35em) {
         display: block;
       }
@@ -42,16 +40,19 @@ header {
   h2 {
     display: none;
     text-align: center;
-    font-size: 2em;
+    font-size: 2.2em;
     font-style: italic;
     @media (min-width: 35em) {
-      margin-top: .2em;
       display: block;
     }
   }
   .icon-menu, .icon-cross {
     float: left;
     margin-left: .4em;
+    font-size: 2em;
+    &:hover {
+      cursor: pointer;
+    }
   }
   ul{
     float: right;
@@ -70,38 +71,8 @@ header {
       }
     }
   }
-  .icon-menu, .icon-cross {
-    font-size: 2.2em;
-    &:hover {
-      cursor: pointer;
-    }
-  }
   &:hover .logo{
     top: -.2em;
     transition: top .3s;
   }
 }
-
-
-// header {
-//   z-index: 100;
-//   position: absolute;
-//   right: 3em;
-//   top: -1.6em;
-//   text-align: center;
-//   padding: 3em 1em 1.5em 1em;
-//   background-color: $primary-color;
-//   border: .3em solid $secondary-color;
-//   color: white;
-//   .icon-location2 {
-//     font-size: 3em;
-//     margin-bottom: .5em;
-//   }
-//   h1 {
-//     font-size: 1.5em;
-//   }
-//   &:hover {
-//     top: -.3em;
-//     transition: top .3s ease;
-//   }
-// }

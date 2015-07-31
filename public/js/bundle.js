@@ -45,9 +45,11 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	__webpack_require__(1);
+	__webpack_require__(7);
+	__webpack_require__(8);
+	__webpack_require__(3);
 	__webpack_require__(5);
-	__webpack_require__(6);
-	module.exports = __webpack_require__(3);
+	module.exports = __webpack_require__(6);
 
 
 /***/ },
@@ -62,6 +64,10 @@
 
 	// require the controller
 	__webpack_require__(3)(indulgeApp);
+
+	// require the directive
+	__webpack_require__(5)(indulgeApp);
+	__webpack_require__(6)(indulgeApp);
 
 
 /***/ },
@@ -28636,7 +28642,6 @@
 	  // if (currentMinute < 10) {
 	  //   currentMinute = "0" + currentMinute;
 	  // }
-
 	  if (currentHour > 12) {
 	    currentHour = currentHour - 12;
 	    return currentHour + ':' + currentMinute + ' PM';
@@ -28746,6 +28751,38 @@
 /* 5 */
 /***/ function(module, exports) {
 
+	'use strict';
+
+	module.exports = function(app){
+	  app.directive('aboutDirective', function(){
+	    return {
+	      restrict: 'AC',
+	      templateUrl: '/js/directives/aboutDirective.html'
+	    };
+	  });
+	};
+
+
+/***/ },
+/* 6 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	module.exports = function(app){
+	  app.directive('tweetsDirective', function(){
+	    return {
+	      restrict: 'AC',
+	      templateUrl: '/js/directives/tweetsDirective.html'
+	    };
+	  });
+	};
+
+
+/***/ },
+/* 7 */
+/***/ function(module, exports) {
+
 	$('.icon-menu').on('click', function() {
 	  $('.tweetList').toggleClass('is-active');
 	  if ($(this).hasClass('icon-menu')) {
@@ -28760,7 +28797,7 @@
 
 
 /***/ },
-/* 6 */
+/* 8 */
 /***/ function(module, exports) {
 
 	$('.activate').on('click', function() {
