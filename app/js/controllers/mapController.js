@@ -95,6 +95,8 @@ module.exports = function(app) {
       $scope.map = new google.maps.Map(document.getElementById('map'), mapOptions);
       var infoWindow = new google.maps.InfoWindow();
 
+//-----Make Clusters-----
+// $('#map').gmap({'zoom': 2, 'disableDefaultUI':true}).bind('init', function(evt, map) {
       //-----Make Google Markers-----
 
       $scope.markers = [];
@@ -118,6 +120,19 @@ module.exports = function(app) {
       for (var i = 0; i < lukesData.length; i++){
         createMarker(lukesData[i]);
       }
+
+
+
+
+
+      // $('#map').gmap({'zoom': 2, 'disableDefaultUI':true}).bind('init', function(evt, map) {
+
+      //   $('#map').gmap('set', 'MarkerClusterer', new MarkerClusterer(map, $(this).gmap('get', 'markers')));
+      //   // To call methods in MarkerClusterer simply call
+      //   // $('#map_canvas').gmap('get', 'MarkerClusterer').callingSomeMethod();
+      // });
+
+
 
       $scope.openInfoWindow = function(e, selectedMarker){
         e.preventDefault();

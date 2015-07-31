@@ -45,13 +45,12 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	__webpack_require__(1);
-	__webpack_require__(11);
-	__webpack_require__(12);
-	__webpack_require__(8);
-	__webpack_require__(9);
 	__webpack_require__(10);
+	__webpack_require__(6);
+	(function webpackMissingModule() { throw new Error("Cannot find module \"/Users/Spud/Desktop/Code Fellows/assignments/indulge/app/js/controllers/mapController.js\""); }());
 	__webpack_require__(7);
-	module.exports = __webpack_require__(5);
+	__webpack_require__(8);
+	module.exports = __webpack_require__(9);
 
 
 /***/ },
@@ -66,15 +65,15 @@
 	var indulgeApp = angular.module('indulgeApp',['ngRoute']);
 
 	// require the controller
-	__webpack_require__(5)(indulgeApp);
-	__webpack_require__(7)(indulgeApp);
+	__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./controllers/mapController.js\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()))(indulgeApp);
+	__webpack_require__(6)(indulgeApp);
 
 	// require the directives
+	__webpack_require__(7)(indulgeApp);
 	__webpack_require__(8)(indulgeApp);
-	__webpack_require__(9)(indulgeApp);
 
 	// require the routes
-	__webpack_require__(10)(indulgeApp);
+	__webpack_require__(9)(indulgeApp);
 
 
 /***/ },
@@ -29453,316 +29452,8 @@
 
 
 /***/ },
-/* 5 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
-
-	var socket = io.connect(process.env.SOCKET_IO_CONNECTION);
-
-	module.exports = function(app) {
-	  app.controller('mapController', ['$scope', function($scope){
-
-	    console.log('socket connected');
-	    socket.on('output', function(lukesData) {
-	      $scope.tweets = lukesData;
-
-	      // -----Make Google Map-----
-
-	      // Map Styling
-
-	      var stylesArray = [
-	        {
-	          "featureType": "landscape.man_made",
-	          "elementType": "geometry.fill",
-	          "stylers": [{"color": "#e9e5dc"}]
-	        },
-	        {
-	          "featureType": "landscape.natural",
-	          "elementType": "geometry.fill",
-	          "stylers": [{"visibility": "on"},{"color": "#b8cb93"}]
-	        },
-	        {
-	          "featureType": "poi",
-	          "elementType": "all",
-	          "stylers": [{"visibility": "off"}]
-	        },
-	        {
-	          "featureType": "poi.business",
-	          "elementType": "all",
-	          "stylers": [{"visibility": "simplified"}]
-	        },
-	        {
-	          "featureType": "poi.medical",
-	          "elementType": "all",
-	          "stylers": [{"visibility": "on"}]
-	        },
-	        {
-	          "featureType": "poi.park",
-	          "elementType": "all",
-	          "stylers": [{"visibility": "on"}]
-	        },
-	        {
-	          "featureType": "poi.park",
-	          "elementType": "geometry.fill",
-	          "stylers": [{"color": "#ccdca1"}]
-	        },
-	        {
-	          "featureType": "poi.sports_complex",
-	          "elementType": "all",
-	          "stylers": [{"visibility": "on"}]
-	        },
-	        {
-	          "featureType": "road",
-	          "elementType": "geometry.fill",
-	          "stylers": [{"hue": "#ff0000"}, {"saturation": -100}, {"lightness": 99}]
-	        },
-	        {
-	          "featureType": "road",
-	          "elementType": "geometry.stroke",
-	          "stylers": [{"color": "#808080"}, {"lightness": 54}, {"visibility": "off"}]
-	        },
-	        {
-	          "featureType": "road",
-	          "elementType": "labels.text.fill",
-	          "stylers": [{"color": "#767676"}]
-	        },
-	        {
-	          "featureType": "road",
-	          "elementType": "labels.text.stroke",
-	          "stylers": [{"color": "#ffffff"}]
-	        },
-	        {
-	          "featureType": "water",
-	          "elementType": "all",
-	          "stylers": [{"saturation": 43},{"lightness": -11},{"color": "#89cada"}]
-	        }
-	      ]
-
-	      var mapOptions = {
-	        zoom: 12,
-	        center: new google.maps.LatLng(47.623581, -122.335661),
-	        styles: stylesArray,
-	        disableDefaultUI: true,
-	        zoomControl: true,
-	        zoomControlOptions: {
-	          style: google.maps.ZoomControlStyle.LARGE,
-	          position: google.maps.ControlPosition.RIGHT_CENTER
-	        }
-	      }
-	      $scope.map = new google.maps.Map(document.getElementById('map'), mapOptions);
-	      var infoWindow = new google.maps.InfoWindow();
-
-	      //-----Make Google Markers-----
-
-	      $scope.markers = [];
-
-	      var infoWindow = new google.maps.InfoWindow();
-	      var createMarker = function (info){
-	        var marker = new google.maps.Marker({
-	          map: $scope.map,
-	          position: new google.maps.LatLng(info.longitude, info.latitute),
-	          title: info.text
-	        });
-
-	        google.maps.event.addListener(marker, 'click', function(){
-	          infoWindow.setContent('<p class="markerTitle icon-twitter"> - "' + marker.title + '"</p>');
-	          infoWindow.open($scope.map, marker);
-	        });
-
-	        $scope.markers.push(marker);
-	      }
-
-	      for (var i = 0; i < lukesData.length; i++){
-	        createMarker(lukesData[i]);
-	      }
-
-	      $scope.openInfoWindow = function(e, selectedMarker){
-	        e.preventDefault();
-	        google.maps.event.trigger(selectedMarker, 'click');
-	      }
-
-	      $scope.$apply();
-	    });
-
-	    socket.on('newTweet', function(newTweet) {
-	      var infoWindow = new google.maps.InfoWindow();
-	      var createMarker = function (info) {
-	        var marker = new google.maps.Marker({
-	          map: $scope.map,
-	          position: new google.maps.LatLng(info.longitude, info.latitute),
-	          title: info.text
-	        });
-
-	        google.maps.event.addListener(marker, 'click', function(){
-	          infoWindow.setContent('<h2>' + marker.title + '</h2>');
-	          infoWindow.open($scope.map, marker);
-	        });
-
-	        $scope.markers.push(marker);
-
-	        $scope.openInfoWindow = function(e, selectedMarker){
-	          e.preventDefault();
-	          google.maps.event.trigger(selectedMarker, 'click');
-	        }
-
-	        $scope.$apply();
-	      };
-	      createMarker(newTweet);
-
-
-	      var listOfTweets = document.getElementsByClassName('tweetListView');
-
-	      var newListContent = document.createElement('section');
-	      newListContent.setAttribute('class','tweetListView');
-	      newListContent.innerHTML += '<p>"' + newTweet.text + '"</p><p class="icon-twitter"> on ' + newTweet.curDate + '</p>';
-	      //newListContent.innerHTML += '<p>"' + newTweet.text + '"</p><p class="icon-twitter"> on ' + formatMonth(newTweet.curMonth) + newTweet.curDay + ', ' + newTweet.curYear + ' at ' + formatTime(newTweet.curHour, newTweet.curMinute) + '</p>';
-	      tweetList.insertBefore(newListContent, listOfTweets[0]);
-
-	    });
-	  }]);
-	};
-
-	function formatMonth(month) {
-	  if (month == 1) {
-	    return 'Jan ';
-	  } else if (month == 2) {
-	    return 'Feb ';
-	  } else if (month == 3) {
-	    return 'Mar ';
-	  } else if (month == 4) {
-	    return 'Apr ';
-	  } else if (month == 5) {
-	    return 'May ';
-	  } else if (month == 6) {
-	    return 'Jun ';
-	  } else if (month == 7) {
-	    return 'Jul ';
-	  } else if (month == 8) {
-	    return 'Aug ';
-	  } else if (month == 9) {
-	    return 'Sept ';
-	  } else if (month == 10) {
-	    return 'Oct ';
-	  } else if (month == 11) {
-	    return 'Nov ';
-	  } else if (month == 12) {
-	    return 'Dec ';
-	  }
-	}
-
-	function formatTime(currentHour, currentMinute) {
-	  // if (currentMinute < 10) {
-	  //   currentMinute = "0" + currentMinute;
-	  // }
-	  if (currentHour > 12) {
-	    currentHour = currentHour - 12;
-	    return currentHour + ':' + currentMinute + ' PM';
-	  } else {
-	    return currentHour + ':' + currentMinute + ' AM';
-	  }
-	}
-
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
-
-/***/ },
+/* 5 */,
 /* 6 */
-/***/ function(module, exports) {
-
-	// shim for using process in browser
-
-	var process = module.exports = {};
-	var queue = [];
-	var draining = false;
-	var currentQueue;
-	var queueIndex = -1;
-
-	function cleanUpNextTick() {
-	    draining = false;
-	    if (currentQueue.length) {
-	        queue = currentQueue.concat(queue);
-	    } else {
-	        queueIndex = -1;
-	    }
-	    if (queue.length) {
-	        drainQueue();
-	    }
-	}
-
-	function drainQueue() {
-	    if (draining) {
-	        return;
-	    }
-	    var timeout = setTimeout(cleanUpNextTick);
-	    draining = true;
-
-	    var len = queue.length;
-	    while(len) {
-	        currentQueue = queue;
-	        queue = [];
-	        while (++queueIndex < len) {
-	            currentQueue[queueIndex].run();
-	        }
-	        queueIndex = -1;
-	        len = queue.length;
-	    }
-	    currentQueue = null;
-	    draining = false;
-	    clearTimeout(timeout);
-	}
-
-	process.nextTick = function (fun) {
-	    var args = new Array(arguments.length - 1);
-	    if (arguments.length > 1) {
-	        for (var i = 1; i < arguments.length; i++) {
-	            args[i - 1] = arguments[i];
-	        }
-	    }
-	    queue.push(new Item(fun, args));
-	    if (queue.length === 1 && !draining) {
-	        setTimeout(drainQueue, 0);
-	    }
-	};
-
-	// v8 likes predictible objects
-	function Item(fun, array) {
-	    this.fun = fun;
-	    this.array = array;
-	}
-	Item.prototype.run = function () {
-	    this.fun.apply(null, this.array);
-	};
-	process.title = 'browser';
-	process.browser = true;
-	process.env = {};
-	process.argv = [];
-	process.version = ''; // empty string to avoid regexp issues
-	process.versions = {};
-
-	function noop() {}
-
-	process.on = noop;
-	process.addListener = noop;
-	process.once = noop;
-	process.off = noop;
-	process.removeListener = noop;
-	process.removeAllListeners = noop;
-	process.emit = noop;
-
-	process.binding = function (name) {
-	    throw new Error('process.binding is not supported');
-	};
-
-	// TODO(shtylman)
-	process.cwd = function () { return '/' };
-	process.chdir = function (dir) {
-	    throw new Error('process.chdir is not supported');
-	};
-	process.umask = function() { return 0; };
-
-
-/***/ },
-/* 7 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -29777,7 +29468,7 @@
 
 
 /***/ },
-/* 8 */
+/* 7 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -29793,7 +29484,7 @@
 
 
 /***/ },
-/* 9 */
+/* 8 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -29809,7 +29500,7 @@
 
 
 /***/ },
-/* 10 */
+/* 9 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -29829,7 +29520,7 @@
 
 
 /***/ },
-/* 11 */
+/* 10 */
 /***/ function(module, exports) {
 
 	$('.icon-menu').on('click', function() {
@@ -29842,16 +29533,6 @@
 	    $(this).removeClass('icon-cross');
 	    $(this).addClass('icon-menu');
 	  }
-	});
-
-
-/***/ },
-/* 12 */
-/***/ function(module, exports) {
-
-	$('.activate').on('click', function() {
-	  $('.mask').removeClass('is-active');
-	  $('.welcome').css('display', 'none');
 	});
 
 
