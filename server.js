@@ -57,7 +57,7 @@ mongo.connect(mongoURI, function(err, db) {   //open mongo connection
       console.log('A new user has connected!\n');
 
       //send tweets that are already in db to client
-      col.find().sort({curDate: -1}).limit(300).toArray(function(err, result) {
+      col.find().sort({curDate: -1}).limit(500).toArray(function(err, result) {
         if (err) {
           console.log(err);
         }
