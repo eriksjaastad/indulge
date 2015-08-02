@@ -9,11 +9,8 @@
     <link rel="icon" type="image/png" href="images/favicon.png">
     <link rel="apple-touch-icon" sizes="144x144" href="images/homescreen-icon.png" />
     <script src="https://cdn.socket.io/socket.io-1.3.5.js"></script>
-
-
   </head>
   <body data-ng-app="indulgeApp">
-
     <header class="slideDown clearfix">
       <section class="icon-menu"></section>
       <ul class="clearfix">
@@ -27,18 +24,12 @@
       <h2>Visual Data Surrounding You</h2>
     </header>
     <!-- <div class="mask is-active"></div> -->
-
     <main data-ng-controller="mapController">
       <!-- <article class="welcome" data-about-directive></article> -->
-
       <article class="tweetList" id="tweetList" data-tweets-directive></article>
       <section id="map"></section>
-
       <div data-ng-view></div>
-
     </main>
-
-
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
   <script src="markerclusterer.min.js"></script>

@@ -24,6 +24,8 @@ You'll need:
 * access_token_secret
 
 DO NOT put these keys in your app, set them to an environment variable
+To set them so that they are always available, check to see if you have `~/.profile` available. If you don't, `touch ~/.profile` and then open it in an editor and add the following lines.
+If you want to set them temporarily, put the following lines in the console window that you want to use. They will only be available in that window.
 In the console:
 *notice there are no spaces around the `=`
 ```
@@ -70,7 +72,7 @@ heroku  https://git.heroku.com/radiant-evermore-4137.git (push)
 origin  https://github.com/your-git-repo/indulge.git (fetch)
 origin  https://github.com/your-git-repo/indulge.git (push)
 ```
-### Seeting up config vas for Heroku
+### Setting up config vas for Heroku
 You can use `config`, `config:set`, `config:get` and `config:unset`
 These config setting are only set per Heroku app.
 ```
@@ -99,7 +101,7 @@ See an error?
 `heroku logs --tail` and Control/Command + C to get out of streaming the logs
 
 Heroku looks for server.js by default but you can make a Procfile to make sure.
-* To make a Prokfile - make a new file with no extention and name it Procfile and put the following in it
+* To make a Procfile - make a new file with no extension and name it Procfile and put the following in it
 `web: node index.js`
 * Use whatever file you're using ass the access file.
 
@@ -120,4 +122,3 @@ For your database connection variable. If you want to see what that is...
 ```
 heroku config | grep MONGOLAB_URI
 ```
-
