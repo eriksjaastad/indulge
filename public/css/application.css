@@ -136,6 +136,7 @@ header {
     header {
       position: absolute; } }
   header .logo {
+    transition: top 0.3s ease;
     font-size: 1.6em;
     text-align: center; }
     header .logo .logoText {
@@ -195,8 +196,7 @@ header {
     header a:hover {
       color: #FF8F8B; }
   header:hover .logo {
-    top: -.2em;
-    transition: top 0.3s; }
+    top: -.2em; }
 
 #map {
   z-index: -1000;
@@ -345,3 +345,12 @@ header {
   display: block; }
 
 /* close commented backslash hack */
+.welcome {
+  -webkit-animation: fadeIn 0.3s linear;
+  animation: fadeIn 0.3s linear; }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }

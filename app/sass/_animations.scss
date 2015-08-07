@@ -1,0 +1,13 @@
+.welcome {
+  -webkit-animation: fadeIn .3s linear;
+  animation: fadeIn .3s linear;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
