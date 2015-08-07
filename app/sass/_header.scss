@@ -10,6 +10,7 @@ header {
   z-index: 200;
   border-bottom: .3em solid $secondary-color;
   .logo {
+    transition: top .3s ease;
     font-size: 1.6em;
     text-align: center;
     .logoText {
@@ -82,6 +83,5 @@ header {
   }
   &:hover .logo{
     top: -.2em;
-    transition: top .3s;
   }
 }
