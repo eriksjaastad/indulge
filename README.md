@@ -24,7 +24,7 @@ You'll need:
 * access_token_secret
 
 DO NOT put these keys in your app, set them to an environment variable
-To set them so that they are always available, check to see if you have `~/.profile` available. If you don't, `touch ~/.profile` and then open it in an editor and add the following lines.
+Mac OS X: To set them so that they are always available, check to see if you have `~/.profile` available. If you don't, `touch ~/.profile` and then open it in an editor and add the following lines.
 If you want to set them temporarily, put the following lines in the console window that you want to use. They will only be available in that window.
 In the console:
 *notice there are no spaces around the `=`
