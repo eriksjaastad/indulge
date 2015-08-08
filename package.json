@@ -4,7 +4,9 @@
   "description": "Geo-targeted heat map using Twitter and Google maps",
   "main": "twitter.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "build": "gulp",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
