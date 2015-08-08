@@ -39,8 +39,8 @@ mongo.connect(mongoURI, function(err, db) {   //open mongo connection
         var newTweet = {
           curDate: new Date().toISOString(),
           text: tweet.text,
-          longitude: tweet.geo.coordinates[1],
-          latitude: tweet.geo.coordinates[0]
+          longitude: tweet.geo.coordinates[0],
+          latitude: tweet.geo.coordinates[1]
         };
 
         col.insert(newTweet);  //save new tweet to db
