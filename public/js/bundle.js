@@ -29538,7 +29538,7 @@
 	        for (var i = 0; i < lukesData.length; i++){
 	//-----Make Google Markers-----
 	          $('#map').gmap('addMarker', {id: i,
-	            'position': new google.maps.LatLng(lukesData[i].longitude, lukesData[i].latitute), 'icon': '../images/marker.png'
+	            'position': new google.maps.LatLng(lukesData[i].longitude, lukesData[i].latitute)
 	          }).click(function() {
 	            $('#map').gmap('openInfoWindow', { 'content' : lukesData[this.id].text }, this);
 	          });
