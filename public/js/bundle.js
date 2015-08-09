@@ -29537,7 +29537,7 @@
 	      $scope.map = $('#map').gmap({ 'zoom' : 12, 'center': '47.623581, -122.335661', 'styles' : stylesArray }).bind('init', function(evt, map){
 	        for (var i = 0; i < tweet.length; i++){
 	//-----Make Google Markers-----
-	          $('#map').gmap('addMarker', {id: i, 'position': new google.maps.LatLng(tweet[i].longitude, tweet[i].latitude), 'icon': '../images/marker.png'}).click(function() {
+	          $('#map').gmap('addMarker', {id: i, 'position': new google.maps.LatLng(tweet[i].latitude, tweet[i].longitude), 'icon': '../images/marker.png'}).click(function() {
 	            $('#map').gmap('openInfoWindow', { 'content' : tweet[this.id].text }, this);
 	          });
 
@@ -29552,7 +29552,7 @@
 	    socket.on('newTweet', function(newTweet) {
 
 	      $('#map').gmap('addMarker', {
-	            'position': new google.maps.LatLng(newTweet.longitude, newTweet.latitude), 'icon': '../images/marker.png'
+	            'position': new google.maps.LatLng(newTweet.latitude, newTweet.longitude), 'icon': '../images/marker.png'
 	          }).click(function() {
 	            $('#map').gmap('openInfoWindow', { 'content' : newTweet.text }, this);
 	          });
