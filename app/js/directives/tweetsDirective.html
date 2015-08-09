@@ -1,4 +1,4 @@
-<section class="tweetListView" data-ng-repeat = "tweet in tweets | orderBy:'-curDate'">
+<section class="tweetListView" data-ng-repeat = "tweet in tweets | orderBy:'-curDate'" data-ng-click="zoomTweet(tweet.latitude, tweet.longitude)">
   <p>"{{tweet.text}}"</p>
   <p class="icon-twitter"> on {{tweet.curDate | date:'MMM dd, yyyy'}} at {{tweet.curDate | date:'h:mm a'}}</p>
 </section>
