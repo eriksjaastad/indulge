@@ -45,7 +45,7 @@ mongo.connect(mongoURI, function(err, db) {   //open mongo connection
 
         col.insert(newTweet);  //save new tweet to db
         io.emit('newTweet', newTweet); //send new tweet to front end
-        console.log(tweet.text);
+        console.log(tweet.geo.coordinates[1], tweet.geo.coordinates[0]);
       }
     }); //end twitter DATA
 
@@ -71,3 +71,7 @@ mongo.connect(mongoURI, function(err, db) {   //open mongo connection
 http.listen(app.get('port'), function() {
   console.log('\nServer is now running on port ' + app.get('port') + '...\n');
 });
+
+
+
+
