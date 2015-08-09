@@ -4,6 +4,14 @@ module.exports = function(app) {
   app.controller('mapController', ['$scope', function($scope){
     socket.on('output', function(tweetData) {
       $scope.tweets = tweetData;
+      $scope.zoomTweet = function(lat, longe) {
+        console.log(lat, longe);
+        //$scope.map = $('#map').gmap({ 'zoom' : 12, 'center': '47.623581, -122.335661', 'styles' : stylesArray });
+        var center = new google.maps.LatLng(40.623581,-122.335661);
+        $scope.map.setCenter(center);
+      };
+
+      
 // -----Make Google Map-----
 
 // Map Styling
@@ -74,7 +82,7 @@ module.exports = function(app) {
           "elementType": "all",
           "stylers": [{"saturation": 43},{"lightness": -11},{"color": "#89cada"}]
         }
-      ]
+      ];
 
       $scope.map = $('#map').gmap({ 'zoom' : 12, 'center': '47.623581, -122.335661', 'styles' : stylesArray }).bind('init', function(evt, map){
         for (var i = 0; i < tweetData.length; i++){
