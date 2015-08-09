@@ -2,9 +2,16 @@
 var socket = io.connect(process.env.SOCKET_IO_CONNECTION);
 module.exports = function(app) {
   app.controller('mapController', ['$scope', function($scope){
-    console.log('socket connected');
     socket.on('output', function(tweetData) {
       $scope.tweets = tweetData;
+      $scope.zoomTweet = function(lat, longe) {
+        console.log(lat, longe);
+        //$scope.map = $('#map').gmap({ 'zoom' : 12, 'center': '47.623581, -122.335661', 'styles' : stylesArray });
+        var center = new google.maps.LatLng(40.623581,-122.335661);
+        $scope.map.setCenter(center);
+      };
+
+      
 // -----Make Google Map-----
 
 // Map Styling
@@ -75,7 +82,7 @@ module.exports = function(app) {
           "elementType": "all",
           "stylers": [{"saturation": 43},{"lightness": -11},{"color": "#89cada"}]
         }
-      ]
+      ];
 
       $scope.map = $('#map').gmap({ 'zoom' : 12, 'center': '47.623581, -122.335661', 'styles' : stylesArray }).bind('init', function(evt, map){
         for (var i = 0; i < tweetData.length; i++){
@@ -99,17 +106,74 @@ module.exports = function(app) {
           }).click(function() {
             $('#map').gmap('openInfoWindow', { 'content' : newTweet.text }, this);
           });
+      //get current date
+      var curTime = new Date();
 
+      //access sidebar tweet list
       var listOfTweets = document.getElementsByClassName('tweetListView');
 
+      //construct new tweet element
       var newListContent = document.createElement('section');
       newListContent.setAttribute('class','tweetListView');
-      newListContent.innerHTML += '<p>"' + newTweet.text + '"</p><p class="icon-twitter"> on ' + newTweet.curDate + '</p>';
-      tweetList.insertBefore(newListContent, listOfTweets[0]);
+      
+      //construct new tweet text
+      var tweetText = document.createElement('p');
+      tweetText.textContent = '"' + newTweet.text + '"';
+      
+      //construct new tweet date
+      var tweetDate = document.createElement('p');
+      tweetDate.setAttribute('class', 'icon-twitter');
+      tweetDate.textContent = ' on ' + formatMonth(curTime.getMonth()) + formatDay(curTime.getDay()) + ', ' + curTime.getFullYear() + ' at ' + formatTime(curTime.getHours(), curTime.getMinutes());
 
+      //build & append tweet
+      newListContent.appendChild(tweetText);
+      newListContent.appendChild(tweetDate);
+      tweetList.insertBefore(newListContent, listOfTweets[0]);
     });
   }]);
 };
 
+//-----Date Formatting-----
+function formatMonth(month) {
+  if (month == 0) {
+    return 'Jan ';
+  } else if (month == 1) {
+    return 'Feb ';
+  } else if (month == 2) {
+    return 'Mar ';
+  } else if (month == 3) {
+    return 'Apr ';
+  } else if (month == 4) {
+    return 'May ';
+  } else if (month == 5) {
+    return 'Jun ';
+  } else if (month == 6) {
+    return 'Jul ';
+  } else if (month == 7) {
+    return 'Aug ';
+  } else if (month == 8) {
+    return 'Sept ';
+  } else if (month == 9) {
+    return 'Oct ';
+  } else if (month == 10) {
+    return 'Nov ';
+  } else if (month == 11) {
+    return 'Dec ';
+  }
+}
 
+function formatDay(day) {
+  day = day < 10 ? '0' + day : day;
+  return day;
+}
 
+function formatTime(currentHour, currentMinute) {
+  currentMinute = currentMinute < 10 ? '0' + currentMinute : currentMinute;
+  
+  if (currentHour > 12) {
+    currentHour = currentHour - 12;
+    return currentHour + ':' + currentMinute + ' PM';
+  } else {
+    return currentHour + ':' + currentMinute + ' AM';
+  }
+}
