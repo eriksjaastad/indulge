@@ -3,8 +3,8 @@ var socket = io.connect(process.env.SOCKET_IO_CONNECTION);
 module.exports = function(app) {
   app.controller('mapController', ['$scope', function($scope){
     console.log('socket connected');
-    socket.on('output', function(lukesData) {
-      $scope.tweets = lukesData;
+    socket.on('output', function(tweetData) {
+      $scope.tweets = tweetData;
 // -----Make Google Map-----
 
 // Map Styling
@@ -78,10 +78,10 @@ module.exports = function(app) {
       ]
 
       $scope.map = $('#map').gmap({ 'zoom' : 12, 'center': '47.623581, -122.335661', 'styles' : stylesArray }).bind('init', function(evt, map){
-        for (var i = 0; i < lukesData.length; i++){
+        for (var i = 0; i < tweet.length; i++){
 //-----Make Google Markers-----
-          $('#map').gmap('addMarker', {id: i, 'position': new google.maps.LatLng(lukesData[i].longitude, lukesData[i].latitude)}).click(function() {
-            $('#map').gmap('openInfoWindow', { 'content' : lukesData[this.id].text }, this);
+          $('#map').gmap('addMarker', {id: i, 'position': new google.maps.LatLng(tweet[i].longitude, tweet[i].latitude), 'icon': '../images/marker.png'}).click(function() {
+            $('#map').gmap('openInfoWindow', { 'content' : tweet[this.id].text }, this);
           });
 
         }
@@ -95,7 +95,7 @@ module.exports = function(app) {
     socket.on('newTweet', function(newTweet) {
 
       $('#map').gmap('addMarker', {
-            'position': new google.maps.LatLng(newTweet.latitude, newTweet.longitude)
+            'position': new google.maps.LatLng(newTweet.longitude, newTweet.latitude), 'icon': '../images/marker.png'
           }).click(function() {
             $('#map').gmap('openInfoWindow', { 'content' : newTweet.text }, this);
           });
