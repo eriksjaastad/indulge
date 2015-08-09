@@ -29535,10 +29535,10 @@
 	      ]
 
 	      $scope.map = $('#map').gmap({ 'zoom' : 12, 'center': '47.623581, -122.335661', 'styles' : stylesArray }).bind('init', function(evt, map){
-	        for (var i = 0; i < tweet.length; i++){
+	        for (var i = 0; i < tweetData.length; i++){
 	//-----Make Google Markers-----
-	          $('#map').gmap('addMarker', {id: i, 'position': new google.maps.LatLng(tweet[i].latitude, tweet[i].longitude), 'icon': '../images/marker.png'}).click(function() {
-	            $('#map').gmap('openInfoWindow', { 'content' : tweet[this.id].text }, this);
+	          $('#map').gmap('addMarker', {id: i, 'position': new google.maps.LatLng(tweetData[i].latitude, tweetData[i].longitude), 'icon': '../images/marker.png'}).click(function() {
+	            $('#map').gmap('openInfoWindow', { 'content' : tweetData[this.id].text }, this);
 	          });
 
 	        }
