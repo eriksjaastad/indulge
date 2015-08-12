@@ -191,6 +191,8 @@ MarkerClusterer.prototype.MARKER_CLUSTER_IMAGE_PATH_ =
     'images/m';
 
 
+
+
 /**
  * The marker cluster image path.
  *
