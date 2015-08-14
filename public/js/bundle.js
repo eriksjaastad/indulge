@@ -29580,7 +29580,7 @@
 	      //construct new tweet date
 	      var tweetDate = document.createElement('p');
 	      tweetDate.setAttribute('class', 'icon-twitter');
-	      tweetDate.textContent = ' on ' + formatMonth(curTime.getMonth()) + formatDay(curTime.getDay()) + ', ' + curTime.getFullYear() + ' at ' + formatTime(curTime.getHours(), curTime.getMinutes());
+	      tweetDate.textContent = ' on ' + formatMonth(curTime.getMonth()) + formatDay(curTime.getDate()) + ', ' + curTime.getFullYear() + ' at ' + formatTime(curTime.getHours(), curTime.getMinutes());
 
 	      //build & append tweet
 	      newListContent.appendChild(tweetText);
@@ -29619,9 +29619,9 @@
 	  }
 	}
 
-	function formatDay(day) {
-	  day = day < 10 ? '0' + day : day;
-	  return day;
+	function formatDay(date) {
+	  date = date < 10 ? '0' + date : date;
+	  return date;
 	}
 
 	function formatTime(currentHour, currentMinute) {
