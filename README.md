@@ -72,7 +72,7 @@ heroku  https://git.heroku.com/radiant-evermore-4137.git (push)
 origin  https://github.com/your-git-repo/indulge.git (fetch)
 origin  https://github.com/your-git-repo/indulge.git (push)
 ```
-### Setting up config vas for Heroku
+### Setting up config vars for Heroku
 You can use `config`, `config:set`, `config:get` and `config:unset`
 These config setting are only set per Heroku app.
 ```
